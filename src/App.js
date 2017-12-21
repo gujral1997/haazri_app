@@ -5,6 +5,6 @@ Navigation.startSingleScreenApp
 ({
 screen:{
   screen:'navigation.StartUpScreen',
-  title:'Start Up Screen'
+  title:'Start Up Screen',
 },
 });

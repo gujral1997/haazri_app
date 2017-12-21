@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import {StyleSheet, Text, View,Dimensions,Image,ImageBackground,Animated } from 'react-native';
 import {Navigation} from 'react-native-navigation';
+import {startSingleScreenApplication} from '../styles/navigatorStyles';
 export default class StartUpScreen extends Component {
+  static navigatorStyle=startSingleScreenApplication;
   componentWillMount()
   {
     setTimeout(
@@ -26,7 +28,9 @@ export default class StartUpScreen extends Component {
          alignItems:'center',
          justifyContent:'center'
        }}>
-      </Image></View>
+      </Image>
+      <Text>Logo</Text>
+      </View>
       </ImageBackground>
     );
   }
