@@ -1,6 +1,21 @@
 import React,{Component} from 'react';
 import {StyleSheet, Text, View,Dimensions,Image,ImageBackground,Animated } from 'react-native';
+import {Navigation} from 'react-native-navigation';
 export default class StartUpScreen extends Component {
+  componentWillMount()
+  {
+    setTimeout(
+      ()=>{
+        this.props.navigator.push(
+          {
+            screen:'navigation.LoginScreen',
+            title:'LoginScreen',
+          }
+        );
+      },3000
+
+    );
+  }
   render() {
     return (
       <ImageBackground source={require('../../src/images/bg.png')} style={styles.container}>
