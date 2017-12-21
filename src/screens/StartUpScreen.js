@@ -4,17 +4,14 @@ export default class StartUpScreen extends Component {
   render() {
     return (
       <ImageBackground source={require('../../src/images/bg.png')} style={styles.container}>
-      <View>
-      <Image source={require('../../src/images/car.png')} style={{
+      <View style={styles.logo}><Image source={require('../../src/images/logo1.png')} style={{
          height:100,
          width:100,
-         position:'absolute',
-         zIndex:1,
-         bottom:50,
          resizeMode:'stretch',
+         alignItems:'center',
+         justifyContent:'center'
        }}>
-      </Image>
-      </View>
+      </Image></View>
       </ImageBackground>
     );
   }
@@ -25,5 +22,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position:'relative',
+  },
+  logo:
+  {
+    alignItems:'center',
+    justifyContent:'center',
+    flexGrow:1
   },
 });
