@@ -14,24 +14,22 @@ export default class StartUpScreen extends Component {
             title:'LoginScreen',
           }
         );
-      },3000
+      },5000
 
     );
   }
   render() {
     return (
-      <ImageBackground source={require('../../src/images/bg.png')} style={styles.container}>
-      <View style={styles.logo}><Image source={require('../../src/images/logo1.png')} style={{
-         height:100,
-         width:100,
+      <View style={styles.logo}><Image source={require('../../src/images/logo.png')} style={{
          resizeMode:'stretch',
          alignItems:'center',
-         justifyContent:'center'
+         justifyContent:'center',
+         height:500,
+         width:300,
        }}>
       </Image>
-      <Text>Logo</Text>
+      <Text>Splash Screen Is being Created By Hetarth</Text>
       </View>
-      </ImageBackground>
     );
   }
 }
@@ -46,6 +44,5 @@ const styles = StyleSheet.create({
   {
     alignItems:'center',
     justifyContent:'center',
-    flexGrow:1
   },
 });

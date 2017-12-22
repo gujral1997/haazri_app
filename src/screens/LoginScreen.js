@@ -1,21 +1,24 @@
 import React, {Component} from 'react';
-import {StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView} from 'react-native';
+import {Image,StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView} from 'react-native';
 import {Navigation} from 'react-native-navigation';
-import {startSingleScreenApplication} from '../styles/navigatorStyles';
+import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 export default class LoginScreen extends Component
   {
-    static navigatorStyle=startSingleScreenApplication;
+    static navigatorStyle=startSingleScreenApplicationLogin;
     render(){
       return(
         <KeyboardAvoidingView
      style={styles.container}
      behavior="padding"
 >
-        <View>
-        <Text style={styles.text}>Login</Text>
-        </View>
-        <KeyboardAvoidingView behavior="position">
+          <View style={{alignItems:'center',marginTop:-10}}>
+          <Image source={require('../../src/images/logo.png')} style={styles.Image}/>
+          </View>
+          <View style={{marginTop:-170}}>
+          <View style={{alignItems:'center',justifyContent:'center'}}>
+          <Text style={styles.text}>Login</Text>
+          </View>
         <View style={styles.loginContainer}>
           <View style={styles.inputBar}>
           <View style={{height:40,width:30,alignItems:'center',justifyContent:'center',borderRightWidth:0.8,borderRightColor:'#ebebeb'}}>
@@ -31,13 +34,13 @@ export default class LoginScreen extends Component
           <TextInput style={styles.inputText} placeholder='Your Password' secureTextEntry={true} underlineColorAndroid="#fff"/>
           </View>
         </View>
-        <View style={{flexDirection:'row',justifyContent:'center'}}>
+        <View style={{flexDirection:'row',justifyContent:'center',marginTop:-80}}>
           <TouchableOpacity>
             <Text style={styles.button}>Sign In</Text>
           </TouchableOpacity>
         </View>
+          </View>
         </KeyboardAvoidingView>
-         </KeyboardAvoidingView>
       );
     }
   }
@@ -46,7 +49,7 @@ const styles=StyleSheet.create({
     flex:1,
     justifyContent:'center',
     alignItems:'center',
-    backgroundColor:'rgb(0,132,149)',
+    backgroundColor:'rgb(9,30,52)',
   },
   text:{
     fontSize:22,
@@ -57,8 +60,9 @@ const styles=StyleSheet.create({
     padding:5,
     height:90.8,
     backgroundColor:'#fff',
-    marginBottom:20,
-    borderRadius:10
+    marginBottom:100,
+    borderRadius:10,
+    justifyContent:'center'
   },
   inputBar:{
     flex:1,
@@ -83,12 +87,16 @@ const styles=StyleSheet.create({
   },
   button:{
     backgroundColor:'#fff',
-    color:'rgb(0,132,149)',
+    color:'rgb(9,30,52)',
     fontSize:16,
     padding:5,
     width:150,
     textAlign:'center',
     borderRadius:10
   },
+  Image:{
+    height:300,
+    width:300
+  }
 
 })
