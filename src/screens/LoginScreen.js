@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView} from 'react-native';
+import {StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import {startSingleScreenApplication} from '../styles/navigatorStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -8,10 +8,14 @@ export default class LoginScreen extends Component
     static navigatorStyle=startSingleScreenApplication;
     render(){
       return(
-        <View style={styles.container}>
+        <KeyboardAvoidingView
+     style={styles.container}
+     behavior="padding"
+>
         <View>
         <Text style={styles.text}>Login</Text>
         </View>
+        <KeyboardAvoidingView behavior="position">
         <View style={styles.loginContainer}>
           <View style={styles.inputBar}>
           <View style={{height:40,width:30,alignItems:'center',justifyContent:'center',borderRightWidth:0.8,borderRightColor:'#ebebeb'}}>
@@ -27,12 +31,13 @@ export default class LoginScreen extends Component
           <TextInput style={styles.inputText} placeholder='Your Password' secureTextEntry={true} underlineColorAndroid="#fff"/>
           </View>
         </View>
-        <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+        <View style={{flexDirection:'row',justifyContent:'center'}}>
           <TouchableOpacity>
             <Text style={styles.button}>Sign In</Text>
           </TouchableOpacity>
         </View>
-        </View>
+        </KeyboardAvoidingView>
+         </KeyboardAvoidingView>
       );
     }
   }
