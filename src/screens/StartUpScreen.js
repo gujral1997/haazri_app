@@ -14,7 +14,7 @@ export default class StartUpScreen extends Component {
             title:'LoginScreen',
           }
         );
-      },5000
+      },3000
 
     );
   }

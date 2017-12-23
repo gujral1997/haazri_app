@@ -24,7 +24,7 @@ export default class LoginScreen extends Component
           <View style={{height:40,width:30,alignItems:'center',justifyContent:'center',borderRightWidth:0.8,borderRightColor:'#ebebeb'}}>
           <Icon name="at" size={16} color="#4c4c4c" underlineColorAndroid="#fff" />
           </View>
-          <TextInput style={styles.inputText} placeholder='Your Email Address' keyboardType="email-address"/>
+          <TextInput style={styles.inputText} placeholder='Your Email Address' keyboardType="email-address" underlineColorAndroid="#fff"/>
           </View>
           <View style={styles.seprator}></View>
           <View style={styles.inputBar}>
