@@ -5,7 +5,7 @@ folow the following steps to run login authentication
 -install myphp admin
 -install express
 -clone my login_authentication repository
--rename it to backend and save at /var/www/ (dont know the path for windows search net for that and save it in ww directory)
+-rename it to backend and save at /var/www/ (dont know the path for windows search net for that and save it in www directory)
 -create database and name it projectHaazri
 -create table inside it and name it login
 -create three fields i.e id,userName,password and set id as primary key
