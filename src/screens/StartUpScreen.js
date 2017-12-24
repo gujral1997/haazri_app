@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import {StyleSheet, Text, View,Dimensions,Image,ImageBackground,Animated } from 'react-native';
+import AnimatedLinearGradient, {presetColors} from 'react-native-animated-linear-gradient';
+import {StyleSheet,Text,View,Image,ImageBackground,Animated,Easing } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import {startSingleScreenApplication} from '../styles/navigatorStyles';
 export default class StartUpScreen extends Component {
@@ -11,24 +12,33 @@ export default class StartUpScreen extends Component {
         this.props.navigator.push(
           {
             screen:'navigation.LoginScreen',
-            title:'LoginScreen',
           }
         );
       },3000
 
     );
   }
+  constructor () {
+    super()
+    this.springValue = new Animated.Value(0.3);
+    Animated.spring(
+      this.springValue,
+      {
+        toValue: 1,
+        friction: 1
+      }
+    ).start()
+  }
   render() {
     return (
-      <View style={styles.logo}><Image source={require('../../src/images/logo.png')} style={{
-         resizeMode:'stretch',
-         alignItems:'center',
-         justifyContent:'center',
-         height:500,
-         width:300,
-       }}>
-      </Image>
-      <Text>Splash Screen Is being Created By Hetarth</Text>
+      <View>
+      <AnimatedLinearGradient customColors={presetColors.instagram} speed={500}/>
+      <View><ImageBackground source={require('../../src/images/bg.png')} style={styles.image}>
+      <Animated.Image
+      style={{ width: 400, height: 600,marginTop:150,
+      marginLeft:10, transform: [{scale: this.springValue}] }}
+      source={require('../../src/images/logo.png')}/>
+      </ImageBackground></View>
       </View>
     );
   }
@@ -37,12 +47,11 @@ export default class StartUpScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    position:'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  logo:
-  {
-    alignItems:'center',
-    justifyContent:'center',
+  image:{
+    width:420,
+    height:660,
   },
 });
