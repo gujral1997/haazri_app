@@ -74,7 +74,7 @@ export default class LoginScreen extends Component
         //If response is true,as set in Express route/users
         if(res.success===true){
           var userName=res.message;
-          //AsyncStorage Used to stor the user name
+          //AsyncStorage Used to store the user name
           AsyncStorage.setItem('userName',userName);
           //Then we redirect to memberarea
           this.props.navigator.push({
