@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image,StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView} from 'react-native';
+import {Image,StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView,AsyncStorage} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -78,7 +78,7 @@ export default class LoginScreen extends Component
           AsyncStorage.setItem('userName',userName);
           //Then we redirect to memberarea
           this.props.navigator.push({
-            id:'Memberarea'
+            screen:'navigation.Memberarea'
           });
           //If login,doesnt succeed
         }
