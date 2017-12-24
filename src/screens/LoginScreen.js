@@ -10,8 +10,7 @@ export default class LoginScreen extends Component
       return(
         <KeyboardAvoidingView
      style={styles.container}
-     behavior="padding"
->
+     behavior="padding">
           <View style={{alignItems:'center',marginTop:-10}}>
           <Image source={require('../../src/images/logo.png')} style={styles.Image}/>
           </View>
@@ -24,24 +23,73 @@ export default class LoginScreen extends Component
           <View style={{height:40,width:30,alignItems:'center',justifyContent:'center',borderRightWidth:0.8,borderRightColor:'#ebebeb'}}>
           <Icon name="at" size={16} color="#4c4c4c" underlineColorAndroid="#fff" />
           </View>
-          <TextInput style={styles.inputText} placeholder='Your Email Address' keyboardType="email-address" underlineColorAndroid="#fff"/>
+          <TextInput style={styles.inputText} placeholder='Your Email Address' keyboardType="email-address" underlineColorAndroid="#fff"
+          onChangeText={(userName)=>this.setState({userName})}
+          value={this.state.userName}
+          />
           </View>
           <View style={styles.seprator}></View>
           <View style={styles.inputBar}>
           <View style={{height:40,width:30,alignItems:'center',justifyContent:'center',borderRightWidth:0.8,borderRightColor:'#ebebeb'}}>
           <Icon name="lock" size={16} color="#4c4c4c"/>
           </View>
-          <TextInput style={styles.inputText} placeholder='Your Password' secureTextEntry={true} underlineColorAndroid="#fff"/>
+          <TextInput style={styles.inputText} placeholder='Your Password' secureTextEntry={true} underlineColorAndroid="#fff"
+          onChangeText={(password)=>this.setState({password})}
+          value={this.state.password}
+          />
           </View>
         </View>
         <View style={{flexDirection:'row',justifyContent:'center',marginTop:-80}}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.login}>
             <Text style={styles.button}>Sign In</Text>
           </TouchableOpacity>
         </View>
           </View>
         </KeyboardAvoidingView>
       );
+    }
+    constructor(props)
+    {
+      super(props);
+      this.state={userName:'',password:''};
+    }
+
+    login=()=>
+    {
+      //post data to express backend point
+      //fecth data via clients ip,local host never works
+      fetch('http://192.168.60.1:3000/users',{
+        method:'POST',
+        headers:{
+          'Accept':'application/json',
+          'Content-Type':'application/json',
+        },
+        body:JSON.stringify({
+          userName:this.state.userName,
+          password:this.state.password,
+        })
+      })
+      .then((response)=>response.json())
+      .then((res)=>{
+        //If response is true,as set in Express route/users
+        if(res.success===true){
+          var userName=res.message;
+          //AsyncStorage Used to stor the user name
+          AsyncStorage.setItem('userName',userName);
+          //Then we redirect to memberarea
+          this.props.navigator.push({
+            id:'Memberarea'
+          });
+          //If login,doesnt succeed
+        }
+        else {
+          {
+            alert(res.message);
+          }
+        }
+
+      })
+      .done();
     }
   }
 const styles=StyleSheet.create({
