@@ -20,7 +20,7 @@ export default class StartUpScreen extends Component {
   }
   constructor () {
     super()
-    this.springValue = new Animated.Value(0.3);
+    this.springValue = new Animated.Value(0);
     Animated.spring(
       this.springValue,
       {
