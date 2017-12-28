@@ -10,6 +10,10 @@ export default class Memberarea extends Component{
   }
   componentDidMount(){
     this.__loadInitialState().done();
+    this.props.navigator.push(
+      {
+        screen:'navigation.studentData',
+      });
   }
   //Load initial state
   __loadInitialState=async()=>{
