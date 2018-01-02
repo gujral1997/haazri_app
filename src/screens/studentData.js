@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React,{Component} from 'react';
+import {Navigation} from 'react-native-navigation';
+import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch } from 'react-native';
 import { Container, Header, Content, List, ListItem, Text,Title } from 'native-base';
 function boolean(string)
@@ -14,6 +16,7 @@ function boolean(string)
   }
 }
 export default class studentData extends Component {
+  static navigatorStyle=startSingleScreenApplicationLogin;
   constructor(props) {
     super(props);
     this.state = {
