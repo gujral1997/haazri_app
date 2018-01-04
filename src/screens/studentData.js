@@ -120,6 +120,10 @@ export default class studentData extends Component {
                     //AsyncStorage.setItem('value',rowData.status);
                     //AsyncStorage.setItem('name',rowData.name);
                     alert(res.message);
+                    this.props.navigator.push({
+                      screen:'navigation.studentData'
+                    });
+
                 })
                 .done();
               }
