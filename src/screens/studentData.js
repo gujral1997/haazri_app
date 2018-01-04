@@ -15,6 +15,31 @@ function boolean(string)
     }
   }
 }
+function reverse(bool)
+{
+  if(bool==='true')
+  {
+    return 'false';
+  }
+  else {
+    {
+      return 'true';
+    }
+  }
+}
+function string(bool)
+{
+  if(bool===true)
+  {
+    return 'true';
+  }
+  else {
+    {
+      return 'false';
+    }
+  }
+}
+
 export default class studentData extends Component {
   static navigatorStyle=startSingleScreenApplicationLogin;
   constructor(props) {
@@ -75,7 +100,30 @@ export default class studentData extends Component {
               <View style={styles.list}><Text>{rowData.name}</Text></View>
               <View style={styles.list}>
               <Switch
-               //onValueChange={ (value) => this.setState({ toggled: value })}
+              onValueChange={ (value) =>
+                {
+                fetch('http://192.168.63.1:3000/switching',{
+                  method:'POST',
+                  headers:{
+                    'Accept':'application/json',
+                    'Content-Type':'application/json',
+                  },
+                  body:JSON.stringify({
+                    value:reverse(rowData.status),
+                    name:rowData.name,
+                  })
+                })
+                .then((response)=>response.json())
+                .then((res)=>{
+                    var value=reverse(rowData.status);
+                    var name=rowData.name;
+                    //AsyncStorage.setItem('value',rowData.status);
+                    //AsyncStorage.setItem('name',rowData.name);
+                    alert(res.message);
+                })
+                .done();
+              }
+            }
                value={boolean(rowData.status)}
                />
               </View>
@@ -91,35 +139,6 @@ export default class studentData extends Component {
       </Container>
       </ScrollView>
     );
-  }
-  switching=()=>
-  {
-    fetch('http://192.168.63.1:3000/switching',{
-      method:'POST',
-      headers:{
-        'Accept':'application/json',
-        'Content-Type':'application/json',
-      },
-      body:JSON.stringify({
-        switchValue:this.state.switchValue,
-      })
-    })
-    .then((response)=>response.json())
-    .then((res)=>{
-      //If response is true,as set in Express route/users
-   /*   if(res.success===true){
-        var switchValue=res.message;
-        //AsyncStorage Used to store the user name
-        AsyncStorage.setItem('switchValue',switchValue);
-      }
-      else {
-        {
-          alert(res.message);
-        }
-      }*/
-  alert(res.message);
-    })
-    .done();
   }
 }
 const styles = StyleSheet.create({

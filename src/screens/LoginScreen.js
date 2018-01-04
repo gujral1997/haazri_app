@@ -76,9 +76,9 @@ export default class LoginScreen extends Component
           var userName=res.message;
           //AsyncStorage Used to store the user name
           AsyncStorage.setItem('userName',userName);
-          //Then we redirect to memberarea
+          //Then we redirect to studentData
           this.props.navigator.push({
-            screen:'navigation.Memberarea'
+            screen:'navigation.studentData'
           });
           //If login,doesnt succeed
         }
