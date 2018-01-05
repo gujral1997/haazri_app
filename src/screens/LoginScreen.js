@@ -9,41 +9,41 @@ export default class LoginScreen extends Component
     render(){
       return(
         <KeyboardAvoidingView
-     style={styles.container}
-     behavior="padding">
+          style={styles.container}
+        behavior="padding">
           <View style={{alignItems:'center',marginTop:-10}}>
-          <Image source={require('../../src/images/logo.png')} style={styles.Image}/>
+            <Image source={require('../../src/images/logo.png')} style={styles.Image}/>
           </View>
           <View style={{marginTop:-170}}>
-          <View style={{alignItems:'center',justifyContent:'center'}}>
-          <Text style={styles.text}>Login</Text>
-          </View>
-        <View style={styles.loginContainer}>
-          <View style={styles.inputBar}>
-          <View style={{height:40,width:30,alignItems:'center',justifyContent:'center',borderRightWidth:0.8,borderRightColor:'#ebebeb'}}>
-          <Icon name="at" size={16} color="#4c4c4c" underlineColorAndroid="#fff" />
-          </View>
-          <TextInput style={styles.inputText} placeholder='Your Email Address' keyboardType="email-address" underlineColorAndroid="#fff"
-          onChangeText={(userName)=>this.setState({userName})}
-          value={this.state.userName}
-          />
-          </View>
-          <View style={styles.seprator}></View>
-          <View style={styles.inputBar}>
-          <View style={{height:40,width:30,alignItems:'center',justifyContent:'center',borderRightWidth:0.8,borderRightColor:'#ebebeb'}}>
-          <Icon name="lock" size={16} color="#4c4c4c"/>
-          </View>
-          <TextInput style={styles.inputText} placeholder='Your Password' secureTextEntry={true} underlineColorAndroid="#fff"
-          onChangeText={(password)=>this.setState({password})}
-          value={this.state.password}
-          />
-          </View>
-        </View>
-        <View style={{flexDirection:'row',justifyContent:'center',marginTop:-80}}>
-          <TouchableOpacity onPress={this.login}>
-            <Text style={styles.button}>Sign In</Text>
-          </TouchableOpacity>
-        </View>
+            <View style={{alignItems:'center',justifyContent:'center'}}>
+              <Text style={styles.text}>Login</Text>
+            </View>
+            <View style={styles.loginContainer}>
+              <View style={styles.inputBar}>
+                <View style={{height:40,width:30,alignItems:'center',justifyContent:'center',borderRightWidth:0.8,borderRightColor:'#ebebeb'}}>
+                  <Icon name="at" size={16} color="#4c4c4c" underlineColorAndroid="#fff" />
+                </View>
+                <TextInput style={styles.inputText} placeholder='Your Email Address' keyboardType="email-address" underlineColorAndroid="#fff"
+                  onChangeText={(userName)=>this.setState({userName})}
+                  value={this.state.userName}
+                />
+              </View>
+              <View style={styles.seprator}></View>
+              <View style={styles.inputBar}>
+                <View style={{height:40,width:30,alignItems:'center',justifyContent:'center',borderRightWidth:0.8,borderRightColor:'#ebebeb'}}>
+                  <Icon name="lock" size={16} color="#4c4c4c"/>
+                </View>
+                <TextInput style={styles.inputText} placeholder='Your Password' secureTextEntry={true} underlineColorAndroid="#fff"
+                  onChangeText={(password)=>this.setState({password})}
+                  value={this.state.password}
+                />
+              </View>
+            </View>
+            <View style={{flexDirection:'row',justifyContent:'center',marginTop:-80}}>
+              <TouchableOpacity onPress={this.login}>
+                <Text style={styles.button}>Sign In</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </KeyboardAvoidingView>
       );
