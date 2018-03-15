@@ -1,12 +1,33 @@
 import React, {Component} from 'react';
-import {Image,StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView,AsyncStorage} from 'react-native';
+import {Image,StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView,AsyncStorage, Platform, BackHandler } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 export default class LoginScreen extends Component
   {
+        componentWillMount()
+        {
+          /*setTimeout(
+            ()=>{
+             this.props.navigation.navigate('loginScreen');
+            },3000
+     );*/
+     if (Platform.OS !== 'android') return
+     BackHandler.addEventListener('hardwareBackPress', () => {
+          const { dispatch } = this.props;
+          // dispatch({ type: 'Navigation/BACK' });
+          // dispatch({ type: 'Back' })
+
+          return true;
+    });
+}
+
+     componentWillUnmount() {
+          if (Platform.OS === 'android') BackHandler.removeEventListener('hardwareBackPress');
+    }
     static navigatorStyle=startSingleScreenApplicationLogin;
     render(){
+
       return(
         <KeyboardAvoidingView
           style={styles.container}
