@@ -31,15 +31,19 @@ export default class StartUpScreen extends Component {
   }
   render() {
     return (
-      <View>
-        <AnimatedLinearGradient customColors={presetColors.instagram} speed={500}/>
-        <View><ImageBackground source={require('../../src/images/bg.png')} style={styles.image}>
-          <Animated.Image
-            style={{ width: 400, height: 600,marginTop:150,
-              marginLeft:10, transform: [{scale: this.springValue}] }}
-            source={require('../../src/images/logo.png')}/>
-        </ImageBackground></View>
-      </View>
+          <View style ={styles.container}>
+              <AnimatedLinearGradient customColors={presetColors.instagram} speed={500}/>
+              <ImageBackground source={require('../../src/images/bg.png')} style={styles.image}>
+              <View style = {{flex:1}}/>
+                <View style = {{flex:3}}>
+                       <Animated.Image
+                        style={{ justifyContent: 'center',
+                        alignItems: 'center', width: 400, height: 600,transform: [{scale: this.springValue}] }}
+                        source={require('../../src/images/logo.png')}/>
+                </View>
+                <View style = {{flex:1}}/>
+              </ImageBackground>
+       </View>
     );
   }
 }
