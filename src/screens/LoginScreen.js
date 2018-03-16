@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image,StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView,AsyncStorage, Platform, BackHandler } from 'react-native';
+import {Image,StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView,AsyncStorage, Platform, BackHandler, ToastAndroid } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -17,7 +17,13 @@ export default class LoginScreen extends Component
           const { dispatch } = this.props;
           // dispatch({ type: 'Navigation/BACK' });
           // dispatch({ type: 'Back' })
-
+          ToastAndroid.showWithGravityAndOffset(
+                    'Press Home to minize the App!',
+                    ToastAndroid.LONG,
+                    ToastAndroid.BOTTOM,
+                    25,
+                    50
+                  );
           return true;
     });
 }
