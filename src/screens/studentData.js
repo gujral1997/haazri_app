@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   },
   textHeading:
   {
-    fontWeight: 'bold', 
+    fontWeight: 'bold',
     fontSize:20,
   },
   image: {
