@@ -4,7 +4,7 @@ import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import material from '../../native-base-theme/variables/material';
 import getTheme from '../../native-base-theme/components';
 import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground } from 'react-native';
-import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input } from 'native-base';
+import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button } from 'native-base';
 
 export default class studentData extends Component {
   static navigatorStyle=startSingleScreenApplicationLogin;
@@ -28,7 +28,7 @@ export default class studentData extends Component {
                <Header>
                  <Title>Attendance Manager</Title>
                </Header>
-               <View style = {{flex:1, flexDirection: 'row'}}>
+               <View style = {{flex:1, flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
                      <View style = {{flex:1}} />
                      <View style = {{flex:2}}>
                            <View style ={{flex:10}} />
@@ -54,10 +54,14 @@ export default class studentData extends Component {
                            </View>
                            <View style ={{flex:10}} />
                            <View style ={{flex:10}} />
-                           <View style ={{flex:10}}>
-                                 <Item rounded>
-                                       <Input placeholder='Rounded Textbox'/>
-                                 </Item>
+                           <View style ={{flex:10, flexDirection:'row'}}>
+                                 <View style={{flex:1}}/>
+                                <View style={{flex:4}}>
+                                      <Button rounded success>
+                                            <Text style ={styles.textHeading}>Success</Text>
+                                      </Button>
+                                </View>
+                                <View style={{flex:1}}/>
                            </View>
                            <View style ={{flex:10}} />
                      </View>
@@ -88,7 +92,7 @@ const styles = StyleSheet.create({
   },
   textHeading:
   {
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     fontSize:20,
   },
   image: {

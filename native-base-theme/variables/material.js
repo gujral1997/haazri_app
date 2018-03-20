@@ -25,7 +25,7 @@ export default {
   badgePadding: 0,
 
   // Button
-  btnFontFamily: "Roboto",
+  btnFontFamily: "Raleway",
   btnDisabledBg: "#b5b5b5",
   buttonPadding: 6,
   get btnPrimaryBg() {
@@ -222,7 +222,7 @@ export default {
 
   // Text
   textColor: "#fff",
-  inverseTextColor: "#000",
+  inverseTextColor: "#fff",
   noteFontSize: 14,
   get defaultTextColor() {
     return this.textColor;
