@@ -3,6 +3,8 @@ package com.navigation;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.masteratul.rn.testexception.RnTestExceptionHandlerPackage;
+import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -29,7 +31,8 @@ import com.reactnativenavigation.NavigationApplication;
          // No need to add RnnPackage and MainReactPackage
          return Arrays.<ReactPackage>asList(
              new LinearGradientPackage(),
-              new VectorIconsPackage()
+              new VectorIconsPackage(),
+              new RnTestExceptionHandlerPackage()
          );
      }
 

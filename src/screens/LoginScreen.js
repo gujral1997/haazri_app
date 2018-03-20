@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {Image,StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView,AsyncStorage, Platform, BackHandler, ToastAndroid } from 'react-native';
 import {Navigation} from 'react-native-navigation';
+import RnTestExceptionHandler from 'rn-test-exception-handler';
 import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
 export default class LoginScreen extends Component
   {
         componentWillMount()
@@ -116,7 +118,15 @@ export default class LoginScreen extends Component
         }
 
       })
-      .done();
+      .catch(function(){
+            ToastAndroid.showWithGravityAndOffset(
+                     'Can\'t connect to Internet!',
+                     ToastAndroid.LONG,
+                     ToastAndroid.BOTTOM,
+                     25,
+                     50
+                   );
+      });
     }
   }
 const styles=StyleSheet.create({
