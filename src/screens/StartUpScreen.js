@@ -14,7 +14,7 @@ export default class StartUpScreen extends Component {
             screen:'navigation.LoginScreen',
           }
         );
-      },3000
+ },1
 
     );
   }

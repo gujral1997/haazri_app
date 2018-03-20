@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Navigation} from 'react-native-navigation';
 import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
-import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch } from 'react-native';
+import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid } from 'react-native';
 import { Container, Header, Content, List, ListItem, Text,Title } from 'native-base';
 function boolean(string)
 {
@@ -119,7 +119,15 @@ export default class studentData extends Component {
                             var name=rowData.name;
                             //AsyncStorage.setItem('value',rowData.status);
                             //AsyncStorage.setItem('name',rowData.name);
-                            alert(res.message);
+                            ToastAndroid.showWithGravityAndOffset(
+                                      res.message,
+                                      ToastAndroid.SHORT,
+                                      ToastAndroid.BOTTOM,
+                                      ToastAndroid.CENTER,
+                                      50,
+                                      30
+                                    );
+                            // alert(res.message);
                             this.props.navigator.push({
                               screen:'navigation.studentData'
                             });
