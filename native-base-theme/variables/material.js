@@ -104,7 +104,7 @@ export default {
   brandLight: "#f4f4f4",
 
   // Font
-  fontFamily: "Roboto",
+  fontFamily: "Raleway",
   fontSizeBase: 15,
   get fontSizeH1() {
     return this.fontSizeBase * 1.8;
@@ -221,16 +221,16 @@ export default {
   tabFontSize: 15,
 
   // Text
-  textColor: "#000",
-  inverseTextColor: "#fff",
+  textColor: "#fff",
+  inverseTextColor: "#000",
   noteFontSize: 14,
   get defaultTextColor() {
     return this.textColor;
   },
 
   // Title
-  titleFontfamily: "Roboto",
-  titleFontSize: 19,
+  titleFontfamily: "Stark",
+  titleFontSize: 30,
   subTitleFontSize: 14,
   subtitleColor: "#FFF",
   titleFontColor: "#FFF",

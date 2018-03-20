@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
 import {Navigation} from 'react-native-navigation';
 import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
-import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid } from 'react-native';
-import { Container, Header, Content, List, ListItem, Text,Title } from 'native-base';
+import material from '../../native-base-theme/variables/material';
+import getTheme from '../../native-base-theme/components';
+import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground } from 'react-native';
+import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider } from 'native-base';
 function boolean(string)
 {
   if(string==='true')
@@ -83,72 +85,76 @@ export default class studentData extends Component {
 
     return (
       <ScrollView>
-        <Container>
-          <Header>
-            <Title>Attendance Manager</Title>
-          </Header>
-          <Content>
-            <List>
-              <View style={{flex: 1, flexDirection: 'row'}}>
-                <View style={styles.listHeading}><Text style={styles.textHeading}>ID</Text></View>
-                <View style={styles.listHeading}><Text style={styles.textHeading}>Name</Text></View>
-                <View style={styles.listHeading}><Text style={styles.textHeading}>Status</Text></View>
-              </View>
-              <ListView
-                dataSource={this.state.dataSource}
-                renderRow={(rowData) => <View style={styles.container}><View style={styles.list}><Text>{rowData.id}</Text></View>
-                  <View style={styles.list}><Text>{rowData.name}</Text></View>
-                  <View style={styles.list}>
-                    <Switch
-                      onValueChange={ (value) =>
-                        {
-                          fetch('http://192.168.56.1:3000/switching',{
-                            method:'POST',
-                            headers:{
-                              'Accept':'application/json',
-                              'Content-Type':'application/json',
-                            },
-                            body:JSON.stringify({
-                              value:reverse(rowData.status),
-                              name:rowData.name,
-                            })
-                          })
-                          .then((response)=>response.json())
-                          .then((res)=>{
-                            var value=reverse(rowData.status);
-                            var name=rowData.name;
-                            //AsyncStorage.setItem('value',rowData.status);
-                            //AsyncStorage.setItem('name',rowData.name);
-                            ToastAndroid.showWithGravityAndOffset(
-                                      res.message,
-                                      ToastAndroid.SHORT,
-                                      ToastAndroid.BOTTOM,
-                                      ToastAndroid.CENTER,
-                                      50,
-                                      30
-                                    );
-                            // alert(res.message);
-                            this.props.navigator.push({
-                              screen:'navigation.studentData'
-                            });
+      <StyleProvider style={getTheme(material)}>
+        <ImageBackground source={require('../images/bg01.jpg')} style={styles.image}>
+             <Container>
+               <Header>
+                 <Title>Attendance Manager</Title>
+               </Header>
+               <Content>
+                 <List>
+                   <View style={{flex: 1, flexDirection: 'row'}}>
+                     <View style={styles.listHeading}><Text style={styles.textHeading}>ID</Text></View>
+                     <View style={styles.listHeading}><Text style={styles.textHeading}>Name</Text></View>
+                     <View style={styles.listHeading}><Text style={styles.textHeading}>Status</Text></View>
+                   </View>
+                   <ListView
+                     dataSource={this.state.dataSource}
+                     renderRow={(rowData) => <View style={styles.container}><View style={styles.list}><Text>{rowData.id}</Text></View>
+                       <View style={styles.list}><Text>{rowData.name}</Text></View>
+                       <View style={styles.list}>
+                         <Switch
+                           onValueChange={ (value) =>
+                             {
+                               fetch('http://192.168.56.1:3000/switching',{
+                                 method:'POST',
+                                 headers:{
+                                   'Accept':'application/json',
+                                   'Content-Type':'application/json',
+                                 },
+                                 body:JSON.stringify({
+                                   value:reverse(rowData.status),
+                                   name:rowData.name,
+                                 })
+                               })
+                               .then((response)=>response.json())
+                               .then((res)=>{
+                                 var value=reverse(rowData.status);
+                                 var name=rowData.name;
+                                 //AsyncStorage.setItem('value',rowData.status);
+                                 //AsyncStorage.setItem('name',rowData.name);
+                                 ToastAndroid.showWithGravityAndOffset(
+                                           res.message,
+                                           ToastAndroid.SHORT,
+                                           ToastAndroid.BOTTOM,
+                                           ToastAndroid.CENTER,
+                                           50,
+                                           30
+                                         );
+                                 // alert(res.message);
+                                 this.props.navigator.push({
+                                   screen:'navigation.studentData'
+                                 });
 
-                          })
-                          .done();
-                        }
-                      }
-                      value={boolean(rowData.status)}
-                    />
-                  </View>
-                </View>}
-              />
-              <View style={{flex: 1, flexDirection: 'row'}}>
-                <View style={styles.list} />
-                <View style={styles.list} />
-                <View style={styles.list} />
-              </View>
-            </List>
-          </Content>
-        </Container>
+                               })
+                               .done();
+                             }
+                           }
+                           value={boolean(rowData.status)}
+                         />
+                       </View>
+                     </View>}
+                   />
+                   <View style={{flex: 1, flexDirection: 'row'}}>
+                     <View style={styles.list} />
+                     <View style={styles.list} />
+                     <View style={styles.list} />
+                   </View>
+                 </List>
+               </Content>
+             </Container>
+        </ImageBackground>
+ </StyleProvider>
       </ScrollView>
     );
   }
@@ -171,6 +177,10 @@ const styles = StyleSheet.create({
   },
   textHeading:
   {
+    fontWeight: 'bold', 
     fontSize:20,
   },
+  image: {
+
+ }
 });
