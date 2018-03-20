@@ -94,14 +94,14 @@ export default class studentData extends Component {
                <Content>
                  <List>
                    <View style={{flex: 1, flexDirection: 'row'}}>
-                     <View style={styles.listHeading}><Text style={styles.textHeading}>ID</Text></View>
-                     <View style={styles.listHeading}><Text style={styles.textHeading}>Name</Text></View>
-                     <View style={styles.listHeading}><Text style={styles.textHeading}>Status</Text></View>
+                     <View style={styles.listHeading}><Text style={styles.text}>ID</Text></View>
+                     <View style={styles.listHeading}><Text style={styles.text}>Name</Text></View>
+                     <View style={styles.listHeading}><Text style={styles.text}>Status</Text></View>
                    </View>
                    <ListView
                      dataSource={this.state.dataSource}
-                     renderRow={(rowData) => <View style={styles.container}><View style={styles.list}><Text>{rowData.id}</Text></View>
-                       <View style={styles.list}><Text>{rowData.name}</Text></View>
+                     renderRow={(rowData) => <View style={styles.container}><View style={styles.list}><Text style={styles.textHeading}>{rowData.id}</Text></View>
+                       <View style={styles.list}><Text style={styles.textHeading}>{rowData.name}</Text></View>
                        <View style={styles.list}>
                          <Switch
                            onValueChange={ (value) =>
@@ -175,11 +175,15 @@ const styles = StyleSheet.create({
  justifyContent: 'center',
  alignItems: 'center',
   },
-  textHeading:
+  text:
   {
     fontWeight: 'bold',
     fontSize:20,
+    color:'white'
   },
+  textHeading: {
+        color:'white'
+ },
   image: {
 
  }

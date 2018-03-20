@@ -11,7 +11,7 @@ export default class StartUpScreen extends Component {
       ()=>{
         this.props.navigator.push(
           {
-            screen:'navigation.ParameterScreen',
+            screen:'navigation.LoginScreen',
           }
         );
  },1

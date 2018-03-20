@@ -15,10 +15,6 @@ export default class studentData extends Component {
     }
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
     return (
       <ScrollView>
@@ -31,6 +27,7 @@ export default class studentData extends Component {
                <View style = {{flex:1, flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
                      <View style = {{flex:1}} />
                      <View style = {{flex:2}}>
+                           <View style ={{flex:10}} />
                            <View style ={{flex:10}} />
                            <View style ={{flex:10}}>
                                  <Item rounded>
@@ -47,22 +44,18 @@ export default class studentData extends Component {
                                        <Input placeholder='Room No.'/>
                                  </Item>
                            </View>
-                           <View style ={{flex:10}}>
-                                 <Item rounded>
-                                       <Input placeholder='Rounded Textbox'/>
-                                 </Item>
-                           </View>
                            <View style ={{flex:10}} />
                            <View style ={{flex:10}} />
                            <View style ={{flex:10, flexDirection:'row'}}>
                                  <View style={{flex:1}}/>
-                                <View style={{flex:4}}>
-                                      <Button rounded success>
-                                            <Text style ={styles.textHeading}>Success</Text>
+                                <View style={{flex:3}}>
+                                      <Button rounded success onPress={this.onpress}>
+                                            <Text style ={styles.textHeading}>Haazri</Text>
                                       </Button>
                                 </View>
                                 <View style={{flex:1}}/>
                            </View>
+                           <View style ={{flex:10}} />
                            <View style ={{flex:10}} />
                      </View>
                      <View style = {{flex:1}} />
@@ -73,6 +66,12 @@ export default class studentData extends Component {
       </ScrollView>
     );
   }
+  onpress=()=>
+  {
+        this.props.navigator.push({
+          screen:'navigation.studentData'
+        });
+ }
 }
 const styles = StyleSheet.create({
   container: {
