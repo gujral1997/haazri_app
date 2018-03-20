@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "native-base": "^2.3.5",
-    "react": "16.0.0",
-    "react-native": "0.51.0",
+    "react": "16.3.0-alpha.2",
+    "react-native": "0.54.2",
     "react-native-animated-linear-gradient": "^1.1.2",
     "react-native-hide-show-password-input": "^1.0.6",
     "react-native-htmlview": "^0.12.1",
@@ -19,10 +19,10 @@
     "react-navigation": "^1.0.0-beta.22"
   },
   "devDependencies": {
-    "babel-jest": "22.0.3",
+    "babel-jest": "23.0.0-alpha.0",
     "babel-preset-react-native": "4.0.0",
-    "jest": "22.0.3",
-    "react-test-renderer": "16.0.0"
+    "jest": "22.4.2",
+    "react-test-renderer": "16.3.0-alpha.2"
   },
   "jest": {
     "preset": "react-native"
