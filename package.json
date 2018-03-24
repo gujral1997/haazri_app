@@ -13,6 +13,7 @@
     "react-native-animated-linear-gradient": "^1.1.2",
     "react-native-datepicker": "^1.6.0",
     "react-native-exception-handler": "^2.7.1",
+    "react-native-fast-image": "^4.0.0",
     "react-native-hide-show-password-input": "^1.0.6",
     "react-native-htmlview": "^0.12.1",
     "react-native-linear-gradient": "^2.4.0",

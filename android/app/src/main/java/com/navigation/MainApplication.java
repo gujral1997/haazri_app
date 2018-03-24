@@ -3,6 +3,7 @@ package com.navigation;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.dylanvann.fastimage.FastImageViewPackage;
 import com.masteratul.rn.testexception.RnTestExceptionHandlerPackage;
 import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
 import com.BV.LinearGradient.LinearGradientPackage;

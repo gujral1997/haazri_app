@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-fast-image')
     compile project(':rn-test-exception-handler')
     compile project(':react-native-exception-handler')
     compile project(':react-native-linear-gradient')
