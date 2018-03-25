@@ -4,6 +4,7 @@ import LoginScreen from './LoginScreen';
 import studentData from './studentData';
 import ParameterScreen from './ParameterScreen';
 import studentImage from './studentImage';
+import afterLogin from './afterLogin';
 export function registerScreens()
 {
   Navigation.registerComponent('navigation.StartUpScreen',()=>StartUpScreen);
@@ -11,4 +12,5 @@ export function registerScreens()
   Navigation.registerComponent('navigation.studentData',()=>studentData);
   Navigation.registerComponent('navigation.ParameterScreen',()=>ParameterScreen);
   Navigation.registerComponent('navigation.studentImage',()=>studentImage);
+  Navigation.registerComponent('navigation.afterLogin',()=>afterLogin);
 }

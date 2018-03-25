@@ -96,10 +96,10 @@ export default class studentImage extends Component {
                                   <Card>
                                     <CardItem>
                                       <Left>
-                                         <Thumbnail source={{uri: 'Image URL'}} />
+                                         <Thumbnail source={{uri: 'http://192.168.56.1:8000/data/work/haazri_model/dataset_original/'+rowData.id+'/0.jpg'}} />
                                          <Body>
                                           <Text>{rowData.name}</Text>
-                                          <Text note>GeekyAnts</Text>
+                                          <Text note>.{rowData.id}</Text>
                                          </Body>
                                       </Left>
                                     </CardItem>
