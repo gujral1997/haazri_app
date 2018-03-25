@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
-import { Text, Image, StyleSheet } from 'react-native';
+import React,{Component} from 'react';
+import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground, Image, Dimensions } from 'react-native';
+import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button } from 'native-base';
+import material from '../../../native-base-theme/variables/material';
+import getTheme from '../../../native-base-theme/components';
+var {height, width} = Dimensions.get('window');
 
 export default class drawerMainScreen extends Component {
 
@@ -7,21 +11,25 @@ export default class drawerMainScreen extends Component {
         drawerLabel: 'Home',
         drawerIcon: ({ tintColor }) => (
           <Image
-            source={require('../../images/bg01.jpg')}
+            source={require('../../ICONS/ICONS_BLACK/01.png')}
             style={[styles.icon, {tintColor: tintColor}]}
           />
         ),
       }
   render() {
     return (
-      <Text>Hello world!</Text>
+           <ImageBackground source={require('../../images/HOMESCREEN.jpg')} style={styles.image}/>
     );
   }
 }
 
 const styles = StyleSheet.create({
   icon: {
-    width: 24,
     height: 24,
+    width: 24,
   },
+  image: {
+width: width,
+height: height
+ },
 });

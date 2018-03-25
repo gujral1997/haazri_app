@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Image, ScrollView, StyleSheet, ListView, View, ActivityIndicator } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, StyleProvider } from 'native-base';
-import material from '../../native-base-theme/variables/material';
-import getTheme from '../../native-base-theme/components';
-import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
+import material from '../../../native-base-theme/variables/material';
+import getTheme from '../../../native-base-theme/components';
 
 function boolean(string)
 {
@@ -43,7 +42,15 @@ function string(bool)
 }
 
 export default class studentImage extends Component {
-      static navigatorStyle=startSingleScreenApplicationLogin;
+      static navigationOptions = {
+        drawerLabel: 'Absantees',
+        drawerIcon: ({ tintColor }) => (
+          <Image
+            source={require('../../ICONS/ICONS_BLACK/04.png')}
+            style={[styles.icon, {tintColor: tintColor}]}
+          />
+        ),
+      }
       constructor(props) {
         super(props);
         this.state = {
@@ -87,7 +94,6 @@ export default class studentImage extends Component {
              <ScrollView>
              <StyleProvider style={getTheme(material)}>
                    <Container>
-                      <Header />
                       <Content>
                       <ListView
                             dataSource={this.state.dataSource}
@@ -134,3 +140,10 @@ export default class studentImage extends Component {
         );
    }
   }
+
+  const styles = StyleSheet.create({
+    icon: {
+      width: 24,
+      height: 24,
+    },
+  });

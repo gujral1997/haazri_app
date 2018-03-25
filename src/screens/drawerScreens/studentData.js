@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
-import {Navigation} from 'react-native-navigation';
-import material from '../../../native-base-theme/variables/material';
-import getTheme from '../../../native-base-theme/components';
 import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground, Image } from 'react-native';
 import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider } from 'native-base';
+import material from '../../../native-base-theme/variables/material';
+import getTheme from '../../../native-base-theme/components';
+
 function boolean(string)
 {
   if(string==='true')
@@ -46,7 +46,7 @@ export default class studentData extends Component {
         drawerLabel: 'Ongoing Attendance',
         drawerIcon: ({ tintColor }) => (
           <Image
-            source={require('../../images/bg01.jpg')}
+            source={require('../../ICONS/ICONS_BLACK/03.png')}
             style={[styles.icon, {tintColor: tintColor}]}
           />
         ),
@@ -95,9 +95,6 @@ export default class studentData extends Component {
       <StyleProvider style={getTheme(material)}>
         <ImageBackground source={require('../../images/bg01.jpg')} style={styles.image}>
              <Container>
-               <Header>
-                 <Title>Attendance Manager</Title>
-               </Header>
                <Content>
                  <List>
                    <View style={{flex: 1, flexDirection: 'row'}}>

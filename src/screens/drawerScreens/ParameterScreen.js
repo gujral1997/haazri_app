@@ -1,13 +1,21 @@
 import React,{Component} from 'react';
-import {Navigation} from 'react-native-navigation';
-import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
-import material from '../../native-base-theme/variables/material';
-import getTheme from '../../native-base-theme/components';
-import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground } from 'react-native';
+import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground, Image } from 'react-native';
 import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button } from 'native-base';
+import material from '../../../native-base-theme/variables/material';
+import getTheme from '../../../native-base-theme/components';
 
-export default class studentData extends Component {
-  static navigatorStyle=startSingleScreenApplicationLogin;
+export default class parameterScreen extends Component {
+
+      static navigationOptions = {
+        drawerLabel: 'Mark Now',
+        drawerIcon: ({ tintColor }) => (
+          <Image
+            source={require('../../ICONS/ICONS_BLACK/02.png')}
+            style={[styles.icon, {tintColor: tintColor}]}
+          />
+        ),
+      }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -19,11 +27,8 @@ export default class studentData extends Component {
     return (
       <ScrollView>
       <StyleProvider style={getTheme(material)}>
-        <ImageBackground source={require('../images/bg01.jpg')} style={styles.image}>
+        <ImageBackground source={require('../../images/bg01.jpg')} style={styles.image}>
              <Container>
-               <Header>
-                 <Title>Attendance Manager</Title>
-               </Header>
                <View style = {{flex:1, flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
                      <View style = {{flex:1}} />
                      <View style = {{flex:2}}>
@@ -96,5 +101,9 @@ const styles = StyleSheet.create({
   },
   image: {
 
- }
+ },
+ icon: {
+   width: 24,
+   height: 24,
+ },
 });
