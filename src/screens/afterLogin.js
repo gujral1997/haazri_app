@@ -1,31 +1,24 @@
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import { Text, StyleSheet, Button, Image } from 'react-native';
 import LoginScreen from './LoginScreen'
-import SideBar from './sideBar'
+import drawerMainScreen from './drawerScreens/drawerMainScreen'
+//import drawerMainScreen from './drawerScreens/studentData'
+//import drawerMainScreen from './drawerScreens/studentImage'
+import material from '../../native-base-theme/variables/material';
+import getTheme from '../../native-base-theme/components';
 import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import React, { Component } from 'react';
 
-class MyHomeScreen extends React.Component {
+export default class afterLogin extends Component {
       static navigatorStyle=startSingleScreenApplicationLogin;
-  static navigationOptions = {
-    drawerLabel: 'Home',
-    drawerIcon: ({ tintColor }) => (
-      <Image
-        source={require('../images/bg.png')}
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    ),
-  };
+      render () {
 
-  render() {
-    return (
-      <Button
-        onPress={() => this.props.navigation.navigate('Notifications')}
-        title="Go to notifications"
-      />
-    );
-  }
+            return(
+                  <MyApp />
+            );
+      }
 }
+
 
 class MyNotificationsScreen extends React.Component {
   static navigatorStyle=startSingleScreenApplicationLogin;
@@ -33,7 +26,7 @@ class MyNotificationsScreen extends React.Component {
     drawerLabel: 'Notifications',
     drawerIcon: ({ tintColor }) => (
       <Image
-        source={require('../images/bg.png')}
+        source={require('../images/bg01.jpg')}
         style={[styles.icon, {tintColor: tintColor}]}
       />
     ),
@@ -58,10 +51,9 @@ const styles = StyleSheet.create({
 
 const MyApp = DrawerNavigator({
   Home: {
-    screen: MyHomeScreen,
+    screen: drawerMainScreen,
   },
   Notifications: {
     screen: MyNotificationsScreen,
   },
 });
-export default MyApp;

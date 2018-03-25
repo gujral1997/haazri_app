@@ -107,7 +107,7 @@ export default class LoginScreen extends Component
           AsyncStorage.setItem('userName',userName);
           //Then we redirect to studentData
           this.props.navigator.push({
-            screen:'navigation.ParameterScreen'
+            screen:'navigation.afterLogin'
           });
           //If login,doesnt succeed
         }

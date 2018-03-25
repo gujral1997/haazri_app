@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {Navigation} from 'react-native-navigation';
-import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import material from '../../native-base-theme/variables/material';
 import getTheme from '../../native-base-theme/components';
 import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground } from 'react-native';
