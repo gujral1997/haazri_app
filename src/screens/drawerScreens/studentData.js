@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import {Navigation} from 'react-native-navigation';
-import material from '../../native-base-theme/variables/material';
-import getTheme from '../../native-base-theme/components';
-import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground } from 'react-native';
+import material from '../../../native-base-theme/variables/material';
+import getTheme from '../../../native-base-theme/components';
+import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground, Image } from 'react-native';
 import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider } from 'native-base';
 function boolean(string)
 {
@@ -42,7 +42,15 @@ function string(bool)
 }
 
 export default class studentData extends Component {
-  static navigatorStyle=startSingleScreenApplicationLogin;
+      static navigationOptions = {
+        drawerLabel: 'Ongoing Attendance',
+        drawerIcon: ({ tintColor }) => (
+          <Image
+            source={require('../../images/bg01.jpg')}
+            style={[styles.icon, {tintColor: tintColor}]}
+          />
+        ),
+      }
   constructor(props) {
     super(props);
     this.state = {
@@ -85,7 +93,7 @@ export default class studentData extends Component {
     return (
       <ScrollView>
       <StyleProvider style={getTheme(material)}>
-        <ImageBackground source={require('../images/bg01.jpg')} style={styles.image}>
+        <ImageBackground source={require('../../images/bg01.jpg')} style={styles.image}>
              <Container>
                <Header>
                  <Title>Attendance Manager</Title>
@@ -185,5 +193,9 @@ const styles = StyleSheet.create({
  },
   image: {
 
- }
+ },
+ icon: {
+   width: 24,
+   height: 24,
+ },
 });
