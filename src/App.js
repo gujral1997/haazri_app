@@ -6,4 +6,10 @@ Navigation.startSingleScreenApp
 screen:{
   screen:'navigation.StartUpScreen',
 },
+drawer: {
+            left: {
+                screen: 'navigation.afterLogin',
+            }
+      }
+
 });

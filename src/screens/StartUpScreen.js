@@ -1,22 +1,27 @@
 import React,{Component} from 'react';
 import AnimatedLinearGradient, {presetColors} from 'react-native-animated-linear-gradient';
 import {StyleSheet,Text,View,Image,ImageBackground,Animated,Easing } from 'react-native';
-import {Navigation} from 'react-native-navigation';
 import {startSingleScreenApplication} from '../styles/navigatorStyles';
+import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 export default class StartUpScreen extends Component {
-  static navigatorStyle=startSingleScreenApplication;
+      static navigatorStyle=startSingleScreenApplicationLogin;
+
   componentWillMount()
   {
-    setTimeout(
+   setTimeout(
       ()=>{
         this.props.navigator.push(
           {
             screen:'navigation.afterLogin',
-          }
-        );
- },3
-
+      },3
     );
+ }
+
+);
+this.props.navigator.setDrawerEnabled({
+  side: 'left', // the side of the drawer since you can have two, 'left' / 'right'
+  enabled: false // should the drawer be enabled or disabled (locked closed)
+});
   }
   constructor () {
     super()

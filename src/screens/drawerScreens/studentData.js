@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground, Image } from 'react-native';
 import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider } from 'native-base';
+import {Navigation} from 'react-native-navigation';
+import {startSingleScreenApplicationLogin} from '../../styles/navigatorStyles';
 import material from '../../../native-base-theme/variables/material';
 import getTheme from '../../../native-base-theme/components';
 
@@ -42,6 +44,7 @@ function string(bool)
 }
 
 export default class studentData extends Component {
+      static navigatorStyle=startSingleScreenApplicationLogin;
       static navigationOptions = {
         drawerLabel: 'Ongoing Attendance',
         drawerIcon: ({ tintColor }) => (
@@ -55,8 +58,13 @@ export default class studentData extends Component {
     super(props);
     this.state = {
       isLoading: true,
+
     }
+
+
   }
+
+
 
   componentDidMount() {
     return fetch('http://192.168.56.1:3000/users1',{
@@ -136,9 +144,11 @@ export default class studentData extends Component {
                                            30
                                          );
                                  // alert(res.message);
-                                 this.props.navigator.push({
-                                   screen:'navigation.studentData'
-                                 });
+                                 this.props.navigator.toggleDrawer({
+  side: 'left', // the side of the drawer since you can have two, 'left' / 'right'
+  animated: true, // does the toggle have transition animation or does it happen immediately (optional)
+  to: 'open' // optional, 'open' = open the drawer, 'closed' = close it, missing = the opposite of current state
+});
 
                                })
                                .done();

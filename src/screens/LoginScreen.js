@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {Image,StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView,AsyncStorage, Platform, BackHandler, ToastAndroid } from 'react-native';
 import {Navigation} from 'react-native-navigation';
+import StartUpScreen from './StartUpScreen'
 import RnTestExceptionHandler from 'rn-test-exception-handler';
 import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
+import afterLogin from './afterLogin'
 export default class LoginScreen extends Component
   {
         componentWillMount()
@@ -69,7 +71,7 @@ export default class LoginScreen extends Component
               </View>
             </View>
             <View style={{flexDirection:'row',justifyContent:'center',marginTop:-80}}>
-              <TouchableOpacity onPress={this.login}>
+              <TouchableOpacity onPress={this.navigate}>
                 <Text style={styles.button}>Sign In</Text>
               </TouchableOpacity>
             </View>
@@ -83,11 +85,27 @@ export default class LoginScreen extends Component
       this.state={userName:'',password:''};
     }
 
+    navigate=()=>
+    {
+
+          this.props.navigator.setDrawerEnabled({
+                screen: 'navigation.afterLogin',
+            side: 'left', // the side of the drawer since you can have two, 'left' / 'right'
+            enabled: false // should the drawer be enabled or disabled (locked closed)
+          });
+
+this.props.navigator.toggleDrawer({
+screen: 'navigation.afterLogin',
+  to: 'shown', // required, 'hidden' = hide tab bar, 'shown' = show tab bar
+  animated: true // does the toggle have transition animation or does it happen immediately (optional)
+});
+   }
+
     login=()=>
     {
       //post data to express backend point
       //fecth data via clients ip,local host never works
-      fetch('http://192.168.43.137:3000/users',{
+      fetch('http://192.168.56.1:3000/users',{
         method:'POST',
         headers:{
           'Accept':'application/json',
