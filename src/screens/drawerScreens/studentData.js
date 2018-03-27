@@ -1,10 +1,13 @@
 import React,{Component} from 'react';
-import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground, Image } from 'react-native';
-import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Left, Button, Icon} from 'native-base';
+import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground, Image, RefreshControl, Promise } from 'react-native';
+import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Left, Button, Icon, Right} from 'native-base';
 import {Navigation} from 'react-native-navigation';
+import PTRView from 'react-native-pull-to-refresh';
 import {startSingleScreenApplicationLogin} from '../../styles/navigatorStyles';
 import material from '../../../native-base-theme/variables/material';
 import getTheme from '../../../native-base-theme/components';
+
+
 
 function boolean(string)
 {
@@ -59,12 +62,8 @@ export default class studentData extends Component {
     super(props);
     this.state = {
       isLoading: true,
-
     }
-
-
   }
-
 
 
   componentDidMount() {
@@ -90,6 +89,12 @@ export default class studentData extends Component {
       });
   }
 
+  refresh(){
+        this.props.navigator.push({
+             screen: "navigation.studentData"
+      });
+ }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -113,7 +118,19 @@ export default class studentData extends Component {
                               </Button>
                         </Left>
                     <Title>Attendance Manager</Title>
+                    <Right>
+                          <Button
+                                 transparent onPress={()=>
+                                       this.props.navigator.push({
+                                            screen: "navigation.studentData"
+                                     })
+                                 }
+                                 >
+                                       <Icon name="refresh" />
+                          </Button>
+                   </Right>
                    </Header>
+
                <Content>
                  <List>
                    <View style={{flex: 1, flexDirection: 'row'}}>
@@ -123,7 +140,9 @@ export default class studentData extends Component {
                    </View>
                    <ListView
                      dataSource={this.state.dataSource}
-                     renderRow={(rowData) => <View style={styles.container}><View style={styles.list}><Text style={styles.textHeading}>{rowData.id}</Text></View>
+                     renderRow={(rowData) =>
+                            <View style={styles.container}>
+                                  <View style={styles.list}><Text style={styles.textHeading}>{rowData.id}</Text></View>
                        <View style={styles.list}><Text style={styles.textHeading}>{rowData.name}</Text></View>
                        <View style={styles.list}>
                          <Switch

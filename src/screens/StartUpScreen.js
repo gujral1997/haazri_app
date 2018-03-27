@@ -12,8 +12,8 @@ export default class StartUpScreen extends Component {
       ()=>{
         this.props.navigator.push(
           {
-            screen:'navigation.afterLogin',
-      },3
+            screen:'navigation.LoginScreen',
+      },3000
     );
  }
 

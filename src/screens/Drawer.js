@@ -1,5 +1,5 @@
 import { StackNavigator, DrawerNavigator, NavigationActions  } from 'react-navigation'
-import { StyleSheet, Image, ImageBackground, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, ImageBackground, Dimensions, TouchableOpacity, View } from 'react-native';
 import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button, Icon, Left } from 'native-base';
 import material from '../../native-base-theme/variables/material';
 import getTheme from '../../native-base-theme/components';
@@ -61,34 +61,61 @@ export default class afterLogin extends Component {
             return(
             <StyleProvider style={getTheme(material)}>
                   <Container>
-                        {/*<Button  onPress={this._goToScreen1.bind(this)}>
-                              <Icon name= "menu"/>
-                        </Button>*/}
                         <ImageBackground source={require('../images/Background-for-Menu.jpg')} style={styles.image}>
-                        <TouchableOpacity
-                           style={styles.button}
-                           onPress={this._goToafterLogin.bind(this)}
-                          >
-                           <Text style={styles.text}> Home</Text>
-                          </TouchableOpacity>
-                          <TouchableOpacity
-                            style={styles.button}
-                            onPress={this._goTomarkit.bind(this)}
-                           >
-                            <Text style={styles.text}> Mark It!</Text>
-                           </TouchableOpacity>
-                           <TouchableOpacity
-                             style={styles.button}
-                             onPress={this._goTostudentData.bind(this)}
-                            >
-                             <Text style={styles.text}> Attendance</Text>
-                            </TouchableOpacity>
-                           <TouchableOpacity
-                             style={styles.button}
-                             onPress={this._goToabsent.bind(this)}
-                            >
-                             <Text style={styles.text}> Absantes</Text>
-                            </TouchableOpacity>
+                              <View style = {{flex:1}}>
+                                    <TouchableOpacity
+                                       style={styles.button}
+                                       onPress={this._goToafterLogin.bind(this)}
+                                      >
+                                           <View style={{flex:1, flexDirection: 'row'}}>
+                                                 <View style ={{flex:1}}>
+                                                       <Image source={require('../ICONS/ICONS_WHITE/01.png')} style={styles.icon}/>
+                                                 </View>
+                                                <View style={{flex:8}}>
+                                                      <Text style={styles.text}> Home</Text>
+                                                </View>
+                                           </View>
+                                      </TouchableOpacity>
+                                      <TouchableOpacity
+                                        style={styles.button}
+                                        onPress={this._goTomarkit.bind(this)}
+                                       >
+                                             <View style={{flex:1, flexDirection: 'row'}}>
+                                                  <View style ={{flex:1}}>
+                                                        <Image source={require('../ICONS/ICONS_WHITE/02.png')} style={styles.icon}/>
+                                                  </View>
+                                                 <View style={{flex:8}}>
+                                                       <Text style={styles.text}>Mark It!</Text>
+                                                 </View>
+                                            </View>
+                                       </TouchableOpacity>
+                                       <TouchableOpacity
+                                         style={styles.button}
+                                         onPress={this._goTostudentData.bind(this)}
+                                        >
+                                              <View style={{flex:1, flexDirection: 'row'}}>
+                                                   <View style ={{flex:1}}>
+                                                         <Image source={require('../ICONS/ICONS_WHITE/03.png')} style={styles.icon}/>
+                                                   </View>
+                                                   <View style={{flex:8}}>
+                                                         <Text style={styles.text}>Attendance</Text>
+                                                   </View>
+                                              </View>
+                                        </TouchableOpacity>
+                                       <TouchableOpacity
+                                         style={styles.button}
+                                         onPress={this._goToabsent.bind(this)}
+                                        >
+                                              <View style={{flex:1, flexDirection: 'row'}}>
+                                                   <View style ={{flex:1}}>
+                                                         <Image source={require('../ICONS/ICONS_WHITE/04.png')} style={styles.icon}/>
+                                                   </View>
+                                                   <View style={{flex:8}}>
+                                                         <Text style={styles.text}>Absantes</Text>
+                                                   </View>
+                                              </View>
+                                        </TouchableOpacity>
+                              </View>
                     </ImageBackground>
                   </Container>
             </StyleProvider>
@@ -113,6 +140,7 @@ const styles = StyleSheet.create({
   icon: {
     height: 24,
     width: 24,
+    marginTop: 5,
   },
   image: {
 width: width,
@@ -120,11 +148,11 @@ height: height
  },
  button: {
     backgroundColor: 'transparent',
-    padding: 10
+    padding: 30
   },
   text: {
         color: '#fff',
-        fontSize: 20,
+        fontSize: 25,
         fontFamily: 'Stark'
  }
 });

@@ -106,6 +106,17 @@ export default class studentImage extends Component {
                                    </Button>
                              </Left>
                          <Title>Attendance Manager</Title>
+                         <Right>
+                               <Button
+                                      transparent onPress={()=>
+                                            this.props.navigator.push({
+                                                 screen: "navigation.studentImage"
+                                          })
+                                      }
+                                      >
+                                            <Icon name="refresh" />
+                               </Button>
+                        </Right>
                         </Header>
                       <Content>
                       <ListView
