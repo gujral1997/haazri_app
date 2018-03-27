@@ -9,33 +9,6 @@ import studentData from './drawerScreens/studentData'
 import studentImage from './drawerScreens/studentImage'
 var {height, width} = Dimensions.get('window');
 
-function screenWrapper (WrappedComponent, model) {
-  let wrapperClass = class extends React.Component {
-    static navigatorStyle = { // Shared styling for all screens
-      ...styles.screen
-      // statusBarHidden: true // DOESNT WORK with native-base, needs to be done via RN StatusBar hidden
-    }
-    constructor (props) {
-      super(props)
-      this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this))
-    }
-    onNavigatorEvent (event) {
-      if (event.type === 'DeepLink') { // For now, just go to screen
-        const parts = event.link.split('/')
-        this.props.navigator.resetTo({ screen: parts[0], passProps: { params: parts.slice(1) } })
-      }
-    }
-    render () {
-      return <WrappedComponent {...this.props} />
-    }
-  }
-  // MERGE styles
-  if (WrappedComponent.navigatorStyle) {
-    wrapperClass.navigatorStyle = Object.assign(wrapperClass.navigatorStyle, WrappedComponent.navigatorStyle)
-  }
-  return wrapperClass
-}
-
 import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import React, { Component } from 'react';
 

@@ -41,9 +41,6 @@ export default class afterLogin extends Component {
             return(
             <StyleProvider style={getTheme(material)}>
                   <Container>
-                        <Header>
-
-                        </Header>
                         <Button  onPress={this._goToScreen1.bind(this)}>
                               <Icon name= "menu"/>
                         </Button>
