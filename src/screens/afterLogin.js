@@ -3,7 +3,6 @@ import { StyleSheet, Image, ImageBackground, Dimensions, View } from 'react-nati
 import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button, Icon, Left } from 'native-base';
 import material from '../../native-base-theme/variables/material';
 import getTheme from '../../native-base-theme/components';
-import drawerMainScreen from './drawerScreens/drawerMainScreen'
 import parameterScreen from './drawerScreens/ParameterScreen'
 import studentData from './drawerScreens/studentData'
 import studentImage from './drawerScreens/studentImage'
@@ -27,15 +26,17 @@ export default class afterLogin extends Component {
                         <Header>
                               <Left>
                                     <Button
-             transparent onPress={this.toggleDrawer}
-            >
-             <Icon name="menu" />
-          </Button>
+                                          transparent onPress={this.toggleDrawer}
+                                          >
+                                                <Icon name="menu" />
+                                    </Button>
                               </Left>
                           <Title>Attendance Manager</Title>
                         </Header>
                         <ImageBackground source={require('../images/HOMESCREEN.jpg')} style={styles.image}>
-                        <View></View>
+                        <View>
+
+                        </View>
                   </ImageBackground>
                   </Container>
             </StyleProvider>
@@ -61,4 +62,5 @@ const styles = StyleSheet.create({
 width: width,
 height: height
  },
+
 });

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Image, ScrollView, StyleSheet, ListView, View, ActivityIndicator } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, StyleProvider } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, StyleProvider, Title } from 'native-base';
 import material from '../../../native-base-theme/variables/material';
 import getTheme from '../../../native-base-theme/components';
+import {startSingleScreenApplicationLogin} from '../../styles/navigatorStyles';
 
 function boolean(string)
 {
@@ -42,15 +43,17 @@ function string(bool)
 }
 
 export default class studentImage extends Component {
-      static navigationOptions = {
-        drawerLabel: 'Absantees',
-        drawerIcon: ({ tintColor }) => (
-          <Image
-            source={require('../../ICONS/ICONS_BLACK/04.png')}
-            style={[styles.icon, {tintColor: tintColor}]}
-          />
-        ),
-      }
+
+      toggleDrawer=()=> {
+           this.props.navigator.toggleDrawer({
+                 to: 'open',
+                 side: 'left',
+                 animated: true
+           });
+     }
+
+      static navigatorStyle=startSingleScreenApplicationLogin;
+
       constructor(props) {
         super(props);
         this.state = {
@@ -94,6 +97,16 @@ export default class studentImage extends Component {
              <ScrollView>
              <StyleProvider style={getTheme(material)}>
                    <Container>
+                        <Header>
+                             <Left>
+                                   <Button
+                                          transparent onPress={this.toggleDrawer}
+                                          >
+                                                <Icon name="menu" />
+                                   </Button>
+                             </Left>
+                         <Title>Attendance Manager</Title>
+                        </Header>
                       <Content>
                       <ListView
                             dataSource={this.state.dataSource}

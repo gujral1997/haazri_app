@@ -1,20 +1,21 @@
 import React,{Component} from 'react';
 import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground, Image } from 'react-native';
-import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button } from 'native-base';
+import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button ,Left, Icon} from 'native-base';
+import {startSingleScreenApplicationLogin} from '../../styles/navigatorStyles';
 import material from '../../../native-base-theme/variables/material';
 import getTheme from '../../../native-base-theme/components';
 
 export default class parameterScreen extends Component {
 
-      static navigationOptions = {
-        drawerLabel: 'Mark Now',
-        drawerIcon: ({ tintColor }) => (
-          <Image
-            source={require('../../ICONS/ICONS_BLACK/02.png')}
-            style={[styles.icon, {tintColor: tintColor}]}
-          />
-        ),
-      }
+      toggleDrawer=()=> {
+           this.props.navigator.toggleDrawer({
+                 to: 'open',
+                 side: 'left',
+                 animated: true
+           });
+     }
+
+      static navigatorStyle=startSingleScreenApplicationLogin;
 
   constructor(props) {
     super(props);
@@ -29,6 +30,16 @@ export default class parameterScreen extends Component {
       <StyleProvider style={getTheme(material)}>
         <ImageBackground source={require('../../images/bg01.jpg')} style={styles.image}>
              <Container>
+                   <Header>
+                        <Left>
+                              <Button
+                                     transparent onPress={this.toggleDrawer}
+                                     >
+                                           <Icon name="menu" />
+                              </Button>
+                        </Left>
+                    <Title>Attendance Manager</Title>
+                   </Header>
                <View style = {{flex:1, flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
                      <View style = {{flex:1}} />
                      <View style = {{flex:2}}>
