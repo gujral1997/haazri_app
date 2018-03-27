@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
 import AnimatedLinearGradient, {presetColors} from 'react-native-animated-linear-gradient';
-import {StyleSheet,Text,View,Image,ImageBackground,Animated,Easing } from 'react-native';
+import {StyleSheet,Text,View,Image,ImageBackground,Animated,Easing, Dimensions} from 'react-native';
 import {startSingleScreenApplication} from '../styles/navigatorStyles';
 import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
+var {height, width} = Dimensions.get('window');
 export default class StartUpScreen extends Component {
       static navigatorStyle=startSingleScreenApplicationLogin;
 
@@ -13,9 +14,9 @@ export default class StartUpScreen extends Component {
         this.props.navigator.push(
           {
             screen:'navigation.LoginScreen',
-      },3000
+      }
     );
- }
+ },3000
 
 );
 this.props.navigator.setDrawerEnabled({
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image:{
-    width:420,
-    height:660,
+    width:width,
+    height:height,
   },
 });
