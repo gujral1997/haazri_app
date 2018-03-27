@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, ScrollView, StyleSheet, ListView, View, ActivityIndicator } from 'react-native';
+import { Image, ScrollView, StyleSheet, ListView, View, ActivityIndicator, ToastAndroid } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, StyleProvider, Title } from 'native-base';
 import material from '../../../native-base-theme/variables/material';
 import getTheme from '../../../native-base-theme/components';
@@ -79,8 +79,17 @@ export default class studentImage extends Component {
              // do something with new state
             });
           })
-          .catch((error) => {
-            console.error(error);
+          .catch(() => {
+                this.props.navigator.push({
+                     screen: "navigation.afterLogin"
+              })
+                ToastAndroid.showWithGravityAndOffset(
+                         'Can\'t connect to Internet!',
+                         ToastAndroid.LONG,
+                         ToastAndroid.BOTTOM,
+                         25,
+                         50
+                       );
           });
       }
   render() {

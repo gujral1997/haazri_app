@@ -84,8 +84,17 @@ export default class studentData extends Component {
           // do something with new state
         });
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
+            this.props.navigator.push({
+                 screen: "navigation.afterLogin"
+          })
+            ToastAndroid.showWithGravityAndOffset(
+                     'Can\'t connect to Internet!',
+                     ToastAndroid.LONG,
+                     ToastAndroid.BOTTOM,
+                     25,
+                     50
+                   );
       });
   }
 
@@ -94,6 +103,11 @@ export default class studentData extends Component {
              screen: "navigation.studentData"
       });
  }
+ reload(){
+      this.props.navigator.push({
+           screen: "navigation.afterLogin"
+     });
+}
 
   render() {
     if (this.state.isLoading) {
@@ -179,7 +193,15 @@ export default class studentData extends Component {
                      		});
 
                                })
-                               .done();
+                               .catch(function(){
+                                     ToastAndroid.showWithGravityAndOffset(
+                                              'Can\'t connect to Internet!',
+                                              ToastAndroid.LONG,
+                                              ToastAndroid.BOTTOM,
+                                              25,
+                                              50
+                                            );
+                               });
                              }
                            }
                            value={boolean(rowData.status)}
