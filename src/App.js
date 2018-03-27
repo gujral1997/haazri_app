@@ -8,7 +8,7 @@ screen:{
 },
 drawer: {
             left: {
-                screen: 'navigation.afterLogin',
+                screen: 'navigation.Drawer',
             }
       }
 

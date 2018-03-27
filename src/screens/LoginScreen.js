@@ -71,7 +71,7 @@ export default class LoginScreen extends Component
               </View>
             </View>
             <View style={{flexDirection:'row',justifyContent:'center',marginTop:-80}}>
-              <TouchableOpacity onPress={this.navigate}>
+              <TouchableOpacity onPress={this.login}>
                 <Text style={styles.button}>Sign In</Text>
               </TouchableOpacity>
             </View>
@@ -85,21 +85,7 @@ export default class LoginScreen extends Component
       this.state={userName:'',password:''};
     }
 
-    navigate=()=>
-    {
 
-          this.props.navigator.setDrawerEnabled({
-                screen: 'navigation.afterLogin',
-            side: 'left', // the side of the drawer since you can have two, 'left' / 'right'
-            enabled: false // should the drawer be enabled or disabled (locked closed)
-          });
-
-this.props.navigator.toggleDrawer({
-screen: 'navigation.afterLogin',
-  to: 'shown', // required, 'hidden' = hide tab bar, 'shown' = show tab bar
-  animated: true // does the toggle have transition animation or does it happen immediately (optional)
-});
-   }
 
     login=()=>
     {
