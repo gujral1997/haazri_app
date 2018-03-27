@@ -3,6 +3,7 @@ package com.navigation;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.lottie.LottiePackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import com.masteratul.rn.testexception.RnTestExceptionHandlerPackage;
 import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
