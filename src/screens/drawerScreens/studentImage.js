@@ -5,6 +5,8 @@ import material from '../../../native-base-theme/variables/material';
 import getTheme from '../../../native-base-theme/components';
 import {startSingleScreenApplicationLogin} from '../../styles/navigatorStyles';
 
+var res;
+
 function boolean(string)
 {
   if(string==='true')
@@ -72,6 +74,7 @@ export default class studentImage extends Component {
           .then((response) => response.json())
           .then((responseJson) => {
             let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+            res = responseJson;
             this.setState({
              isLoading: false,
              dataSource: ds.cloneWithRows(responseJson.message),
@@ -80,16 +83,26 @@ export default class studentImage extends Component {
             });
           })
           .catch(() => {
-                this.props.navigator.push({
-                     screen: "navigation.afterLogin"
-              })
-                ToastAndroid.showWithGravityAndOffset(
-                         'Can\'t connect to Internet!',
-                         ToastAndroid.LONG,
-                         ToastAndroid.BOTTOM,
-                         25,
-                         50
-                       );
+                if(res.success === false) {
+                      this.props.navigator.push({
+                          screen: "navigation.noAbsent"
+                    })
+              }
+
+                           else {
+                                 {
+                                       this.props.navigator.push({
+                                            screen: "navigation.afterLogin"
+                                     })
+                                       ToastAndroid.showWithGravityAndOffset(
+                                                'Can\'t connect to Internet!',
+                                                ToastAndroid.LONG,
+                                                ToastAndroid.BOTTOM,
+                                                25,
+                                                50
+                                              );
+                                 }
+                           }
           });
       }
   render() {
@@ -128,6 +141,7 @@ export default class studentImage extends Component {
                         </Right>
                         </Header>
                       <Content>
+                           <Text>Absentees</Text>
                       <ListView
                             dataSource={this.state.dataSource}
                             renderRow={

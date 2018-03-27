@@ -5,6 +5,7 @@ import afterLogin from './afterLogin';
 import studentData from './drawerScreens/studentData';
 import parameterScreen from './drawerScreens/ParameterScreen';
 import studentImage from './drawerScreens/studentImage';
+import noAbsent from './drawerScreens/noAbsent';
 import Drawer from './Drawer';
 import React,{Component} from 'react';
 
@@ -17,4 +18,5 @@ export function registerScreens()
   Navigation.registerComponent('navigation.Drawer',()=>Drawer);
   Navigation.registerComponent('navigation.studentImage',()=>studentImage);
   Navigation.registerComponent('navigation.parameterScreen',()=>parameterScreen);
+  Navigation.registerComponent('navigation.noAbsent',()=>noAbsent);
 }
