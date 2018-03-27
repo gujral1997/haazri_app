@@ -1,5 +1,5 @@
 import { StackNavigator, DrawerNavigator, NavigationActions  } from 'react-navigation'
-import { StyleSheet, Image, ImageBackground, Dimensions } from 'react-native';
+import { StyleSheet, Image, ImageBackground, Dimensions, View } from 'react-native';
 import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button, Icon, Left } from 'native-base';
 import material from '../../native-base-theme/variables/material';
 import getTheme from '../../native-base-theme/components';
@@ -27,31 +27,29 @@ export default class afterLogin extends Component {
                         <Header>
                               <Left>
                                     <Button
-             transparent onPress={this.done}
+             transparent onPress={this.toggleDrawer}
             >
              <Icon name="menu" />
           </Button>
                               </Left>
                           <Title>Attendance Manager</Title>
                         </Header>
-                        <ImageBackground source={require('../images/HOMESCREEN.jpg')} style={styles.image}/>
+                        <ImageBackground source={require('../images/HOMESCREEN.jpg')} style={styles.image}>
+                        <View></View>
+                  </ImageBackground>
                   </Container>
             </StyleProvider>
             );
       }
 
-      done =()=> {
-            alert('Hello')
-            this.props.navigator.toggleDrawer({
-                  to: 'closed',
-                  side: 'left',
-                  animated: true
-              });
-              this.props.navigator.resetTo({
-                  screen: 'navigation.studentData'
-              });
-
-      }
+      //a
+      toggleDrawer=()=> {
+           this.props.navigator.toggleDrawer({
+                 to: 'open',
+                 side: 'left',
+                 animated: true
+           });
+     }
 }
 
 const styles = StyleSheet.create({

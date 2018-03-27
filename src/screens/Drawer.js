@@ -8,7 +8,7 @@ import parameterScreen from './drawerScreens/ParameterScreen'
 import studentData from './drawerScreens/studentData'
 import studentImage from './drawerScreens/studentImage'
 var {height, width} = Dimensions.get('window');
-
+width = 0.75*width;
 
 import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import React, { Component } from 'react';
@@ -41,9 +41,10 @@ export default class afterLogin extends Component {
             return(
             <StyleProvider style={getTheme(material)}>
                   <Container>
-                        <Button  onPress={this._goToScreen1.bind(this)}>
+                        {/*<Button  onPress={this._goToScreen1.bind(this)}>
                               <Icon name= "menu"/>
-                        </Button>
+                        </Button>*/}
+                        <ImageBackground source={require('../images/Background-for-Menu.jpg')} style={styles.image}/>
                   </Container>
             </StyleProvider>
             );
