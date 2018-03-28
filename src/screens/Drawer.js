@@ -1,6 +1,6 @@
 import { StackNavigator, DrawerNavigator, NavigationActions  } from 'react-navigation'
 import { StyleSheet, Image, ImageBackground, Dimensions, TouchableOpacity, View, AsyncStorage} from 'react-native';
-import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button, Icon, Left } from 'native-base';
+import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button, Icon, Left, Thumbnail } from 'native-base';
 import material from '../../native-base-theme/variables/material';
 import getTheme from '../../native-base-theme/components';
 import parameterScreen from './drawerScreens/ParameterScreen'
@@ -78,8 +78,9 @@ export default class afterLogin extends Component {
             <StyleProvider style={getTheme(material)}>
                   <Container>
                         <ImageBackground source={require('../images/Background-for-Menu.jpg')} style={styles.image}>
-                        <View style={{flex:1}}>
-                              <Text>{this.state.userName}</Text>
+                        <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+                              <Thumbnail source={{uri: 'http://192.168.56.1:8000/data/sih/haazri_model/nameList/'+this.state.userName+'/1.jpg'}} style={{height: 100, width: 100}} />
+                              <Text style={styles.title}>Welcome {this.state.userName}!</Text>
                         </View>
                               <View style = {{flex:3}}>
                                     <TouchableOpacity
@@ -173,5 +174,11 @@ height: height
         color: '#fff',
         fontSize: 25,
         fontFamily: 'Stark'
+ },
+ title :{
+       color: 'white',
+       fontSize:25,
+       fontFamily: 'Raleway',
+       fontWeight: 'bold'
  }
 });
