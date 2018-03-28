@@ -16,7 +16,7 @@ export default class StartUpScreen extends Component {
             screen:'navigation.LoginScreen',
       }
     );
- },3000
+ },3
 
 );
 this.props.navigator.setDrawerEnabled({

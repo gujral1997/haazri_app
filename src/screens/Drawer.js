@@ -1,11 +1,12 @@
 import { StackNavigator, DrawerNavigator, NavigationActions  } from 'react-navigation'
-import { StyleSheet, Image, ImageBackground, Dimensions, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Image, ImageBackground, Dimensions, TouchableOpacity, View, AsyncStorage} from 'react-native';
 import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button, Icon, Left } from 'native-base';
 import material from '../../native-base-theme/variables/material';
 import getTheme from '../../native-base-theme/components';
 import parameterScreen from './drawerScreens/ParameterScreen'
 import studentData from './drawerScreens/studentData'
 import studentImage from './drawerScreens/studentImage'
+import userID from './LoginScreen';
 var {height, width} = Dimensions.get('window');
 width = 0.75*width;
 
@@ -13,6 +14,21 @@ import {startSingleScreenApplicationLogin} from '../styles/navigatorStyles';
 import React, { Component } from 'react';
 
 export default class afterLogin extends Component {
+
+      state = {
+            userName: [],
+      }
+
+      componentDidMount() {
+            this._loadInitialState().done();
+      }
+
+      _loadInitialState = async () => {
+            var value = await AsyncStorage.getItem('userName');
+            if (value !== null) {
+                  this.setState({userName: value});
+            }
+      }
 
       _toggleDrawer() {
            this.props.navigator.toggleDrawer({
@@ -62,7 +78,10 @@ export default class afterLogin extends Component {
             <StyleProvider style={getTheme(material)}>
                   <Container>
                         <ImageBackground source={require('../images/Background-for-Menu.jpg')} style={styles.image}>
-                              <View style = {{flex:1}}>
+                        <View style={{flex:1}}>
+                              <Text>{this.state.userName}</Text>
+                        </View>
+                              <View style = {{flex:3}}>
                                     <TouchableOpacity
                                        style={styles.button}
                                        onPress={this._goToafterLogin.bind(this)}
@@ -111,7 +130,7 @@ export default class afterLogin extends Component {
                                                          <Image source={require('../ICONS/ICONS_WHITE/04.png')} style={styles.icon}/>
                                                    </View>
                                                    <View style={{flex:8}}>
-                                                         <Text style={styles.text}>Absantes</Text>
+                                                         <Text style={styles.text}>Absentees</Text>
                                                    </View>
                                               </View>
                                         </TouchableOpacity>
