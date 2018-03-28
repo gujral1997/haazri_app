@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, ScrollView, StyleSheet, ListView, View, ActivityIndicator, ToastAndroid } from 'react-native';
+import { Image, ScrollView, StyleSheet, ListView, View, ActivityIndicator, ToastAndroid, Switch } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, StyleProvider, Title } from 'native-base';
 import material from '../../../native-base-theme/variables/material';
 import getTheme from '../../../native-base-theme/components';
@@ -160,20 +160,54 @@ export default class studentImage extends Component {
                                       <Image source={{uri: 'http://192.168.56.1:8000/data/work/haazri_model/dataset_original/'+rowData.id+'/0.jpg'}} style={{height: 400, width: null, flex: 1}}/>
                                     </CardItem>
                                     <CardItem>
-                                      <Left>
-                                         <Button transparent>
-                                          <Icon active name="thumbs-up" />
-                                          <Text>12 Likes</Text>
-                                         </Button>
-                                      </Left>
-                                      <Body>
-                                         <Button transparent>
-                                          <Icon active name="chatbubbles" />
-                                          <Text>4 Comments</Text>
-                                         </Button>
-                                      </Body>
                                       <Right>
-                                         <Text>11h ago</Text>
+                                            <Switch
+                                             onValueChange={ (value) =>
+                                               {
+                                                 fetch('http://192.168.56.1:3000/switching',{
+                                                   method:'POST',
+                                                   headers:{
+                                                     'Accept':'application/json',
+                                                     'Content-Type':'application/json',
+                                                   },
+                                                   body:JSON.stringify({
+                                                     value:reverse(rowData.status),
+                                                     name:rowData.name,
+                                                   })
+                                                 })
+                                                 .then((response)=>response.json())
+                                                 .then((res)=>{
+                                                   var value=reverse(rowData.status);
+                                                   var name=rowData.name;
+                                                   //AsyncStorage.setItem('value',rowData.status);
+                                                   //AsyncStorage.setItem('name',rowData.name);
+                                                   ToastAndroid.showWithGravityAndOffset(
+                                                             res.message,
+                                                             ToastAndroid.SHORT,
+                                                             ToastAndroid.BOTTOM,
+                                                             ToastAndroid.CENTER,
+                                                             50,
+                                                             30
+                                                           );
+                                                   // alert(res.message);
+                                                   this.props.navigator.push({
+                                             screen: "navigation.studentImage"
+                                       		});
+
+                                                 })
+                                                 .catch(function(){
+                                                       ToastAndroid.showWithGravityAndOffset(
+                                                                'Can\'t connect to Internet!',
+                                                                ToastAndroid.LONG,
+                                                                ToastAndroid.BOTTOM,
+                                                                25,
+                                                                50
+                                                              );
+                                                 });
+                                               }
+                                             }
+                                             value={boolean(rowData.status)}
+                                           />
                                       </Right>
                                     </CardItem>
                                   </Card>
