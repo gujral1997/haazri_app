@@ -1,11 +1,50 @@
 import React,{Component} from 'react';
-import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground, Image } from 'react-native';
+import { ActivityIndicator, ListView,View,ScrollView,StyleSheet,Switch, ToastAndroid, ImageBackground, Image, KeyboardAvoidingView} from 'react-native';
 import { Container, Header, Content, List, ListItem, Text,Title, StyleProvider, Item, Input, Button ,Left, Icon} from 'native-base';
+import { Dropdown } from 'react-native-material-dropdown';
 import {startSingleScreenApplicationLogin} from '../../styles/navigatorStyles';
 import material from '../../../native-base-theme/variables/material';
 import getTheme from '../../../native-base-theme/components';
 
+var courseId = [{
+value: 'UCS401',
+}, {
+value: 'UCS402',
+}, {
+value: 'UES100',
+},
+{
+value: 'UTA007',
+}
+];
+
+var classId = [{
+value: 'COE',
+}, {
+value: 'ECE',
+}, {
+value: 'MEE',
+},
+{
+value: 'EIC',
+}
+];
+
+var roomNo = [{
+value: '101',
+}, {
+value: '102',
+}, {
+value: '103',
+},
+{
+value: '104',
+}
+];
+
 export default class parameterScreen extends Component {
+
+
 
       toggleDrawer=()=> {
            this.props.navigator.toggleDrawer({
@@ -46,19 +85,28 @@ export default class parameterScreen extends Component {
                            <View style ={{flex:10}} />
                            <View style ={{flex:10}} />
                            <View style ={{flex:10}}>
-                                 <Item rounded>
-                                       <Input placeholder='Course ID'/>
-                                 </Item>
+                                 <Dropdown
+                                      label='Course ID'
+                                      baseColor='rgba(255, 255, 255, 1)'
+                                      textColor='rgba(199, 147, 237, 1)'
+                                      data={courseId}
+                                    />
                            </View>
                            <View style ={{flex:10}}>
-                                 <Item rounded>
-                                       <Input placeholder='Class ID'/>
-                                 </Item>
+                                 <Dropdown
+                                      label='Group ID'
+                                      baseColor='rgba(255, 255, 255, 1)'
+                                      textColor='rgba(199, 147, 237, 1)'
+                                      data={classId}
+                                    />
                            </View>
                            <View style ={{flex:10}}>
-                                 <Item rounded>
-                                       <Input placeholder='Room No.'/>
-                                 </Item>
+                                 <Dropdown
+                                      label='Course ROom No'
+                                      baseColor='rgba(255, 255, 255, 1)'
+                                      textColor='rgba(199, 147, 237, 1)'
+                                      data={roomNo}
+                                    />
                            </View>
                            <View style ={{flex:10}} />
                            <View style ={{flex:10}} />
