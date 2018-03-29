@@ -67,7 +67,7 @@ export default class studentData extends Component {
 
 
   componentDidMount() {
-    return fetch('http://192.168.56.1:3000/users1',{
+    return fetch('http://192.168.43.137:3000/users1',{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -131,7 +131,7 @@ export default class studentData extends Component {
                                            <Icon name="menu" />
                               </Button>
                         </Left>
-                    <Title>Attendance Manager</Title>
+                    <Title style={{marginTop: 10}}>Attendance Manager</Title>
                     <Right>
                           <Button
                                  transparent onPress={()=>
@@ -162,7 +162,7 @@ export default class studentData extends Component {
                          <Switch
                            onValueChange={ (value) =>
                              {
-                               fetch('http://192.168.56.1:3000/switching',{
+                               fetch('http://192.168.43.137:3000/switching',{
                                  method:'POST',
                                  headers:{
                                    'Accept':'application/json',

@@ -230,7 +230,7 @@ export default {
 
   // Title
   titleFontfamily: "Stark",
-  titleFontSize: 30,
+  titleFontSize: 25,
   subTitleFontSize: 14,
   subtitleColor: "#FFF",
   titleFontColor: "#FFF",

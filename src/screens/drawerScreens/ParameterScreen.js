@@ -38,7 +38,7 @@ export default class parameterScreen extends Component {
                                            <Icon name="menu" />
                               </Button>
                         </Left>
-                    <Title>Attendance Manager</Title>
+                    <Title style={{marginTop: 10}}>Attendance Manager</Title>
                    </Header>
                <View style = {{flex:1, flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
                      <View style = {{flex:1}} />

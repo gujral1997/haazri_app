@@ -31,7 +31,7 @@ export default class afterLogin extends Component {
                                                 <Icon name="menu" />
                                     </Button>
                               </Left>
-                          <Title>Attendance Manager</Title>
+                          <Title style={{marginTop: 10}}>Attendance Manager</Title>
                         </Header>
                         <ImageBackground source={require('../images/HOMESCREEN.jpg')} style={styles.image}>
                         <View>

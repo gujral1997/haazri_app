@@ -64,7 +64,7 @@ export default class studentImage extends Component {
       }
 
       componentDidMount() {
-        return fetch('http://192.168.56.1:3000/images',{
+        return fetch('http://192.168.43.137:3000/images',{
           method:'POST',
           headers:{
             'Accept':'application/json',
@@ -127,7 +127,7 @@ export default class studentImage extends Component {
                                                 <Icon name="menu" />
                                    </Button>
                              </Left>
-                         <Title>Attendance Manager</Title>
+                         <Title style={{marginTop: 10}}>Attendance Manager</Title>
                          <Right>
                                <Button
                                       transparent onPress={()=>
@@ -149,7 +149,7 @@ export default class studentImage extends Component {
                                   <Card>
                                     <CardItem>
                                       <Left>
-                                         <Thumbnail source={{uri: 'http://192.168.56.1:8000/data/work/haazri_model/dataset_original/'+rowData.id+'/0.jpg'}} />
+                                         <Thumbnail source={{uri: 'http://192.168.43.137:8000/data/work/haazri_model/dataset_original/'+this.state.userName+'/0.jpg'}} />
                                          <Body>
                                           <Text>{rowData.name}</Text>
                                           <Text note>.{rowData.id}</Text>
@@ -157,14 +157,14 @@ export default class studentImage extends Component {
                                       </Left>
                                     </CardItem>
                                     <CardItem cardBody>
-                                      <Image source={{uri: 'http://192.168.56.1:8000/data/work/haazri_model/dataset_original/'+rowData.id+'/0.jpg'}} style={{height: 400, width: null, flex: 1}}/>
+                                      <Image source={{uri: 'http://192.168.43.137:8000/data/work/haazri_model/dataset_original/'+rowData.id+'/0.jpg'}} style={{height: 400, width: null, flex: 1}}/>
                                     </CardItem>
                                     <CardItem>
                                       <Right>
                                             <Switch
                                              onValueChange={ (value) =>
                                                {
-                                                 fetch('http://192.168.56.1:3000/switching',{
+                                                 fetch('http://192.168.43.137:3000/switching',{
                                                    method:'POST',
                                                    headers:{
                                                      'Accept':'application/json',

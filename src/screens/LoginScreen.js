@@ -71,7 +71,7 @@ export default class LoginScreen extends Component
               </View>
             </View>
             <View style={{flexDirection:'row',justifyContent:'center',marginTop:-80}}>
-              <TouchableOpacity onPress={this.login}>
+              <TouchableOpacity onPress={this.go}>
                 <Text style={styles.button}>Sign In</Text>
               </TouchableOpacity>
             </View>
@@ -85,13 +85,17 @@ export default class LoginScreen extends Component
       this.state={userName:'',password:''};
     }
 
-
+    go=()=>{
+          this.props.navigator.push({
+            screen:'navigation.afterLogin'
+          })
+   }
 
     login=()=>
     {
       //post data to express backend point
       //fecth data via clients ip,local host never works
-      fetch('http://192.168.56.1:3000/users',{
+      fetch('http://192.168.43.137:3000/users',{
         method:'POST',
         headers:{
           'Accept':'application/json',

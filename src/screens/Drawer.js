@@ -79,7 +79,7 @@ export default class afterLogin extends Component {
                   <Container>
                         <ImageBackground source={require('../images/Background-for-Menu.jpg')} style={styles.image}>
                         <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-                              <Thumbnail source={{uri: 'http://192.168.56.1:8000/data/sih/haazri_model/nameList/'+this.state.userName+'/1.jpg'}} style={{height: 100, width: 100}} />
+                              <Thumbnail source={{uri: 'http://0.0.0.0:8000/data/sih/haazri_model/nameList/ansh/1.jpg'}} style={{height: 100, width: 100}} />
                               <Text style={styles.title}>Welcome {this.state.userName}!</Text>
                         </View>
                               <View style = {{flex:3}}>
