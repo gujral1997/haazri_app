@@ -83,7 +83,7 @@ export default class studentImage extends Component {
             });
           })
           .catch(() => {
-                if(res.success === false) {
+                if(res.success !== true) {
                       this.props.navigator.push({
                           screen: "navigation.noAbsent"
                     })
