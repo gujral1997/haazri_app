@@ -4,7 +4,7 @@ registerScreens();
 Navigation.startSingleScreenApp
 ({
 screen:{
-  screen:'navigation.afterLogin',
+  screen:'navigation.LoginScreen',
 },
 drawer: {
             left: {

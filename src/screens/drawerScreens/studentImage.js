@@ -116,7 +116,6 @@ export default class studentImage extends Component {
         }
 
         return (
-             <ScrollView>
              <StyleProvider style={getTheme(material)}>
                    <Container>
                         <Header>
@@ -140,6 +139,7 @@ export default class studentImage extends Component {
                                </Button>
                         </Right>
                         </Header>
+                  <ScrollView>
                       <Content>
                            <Text>Absentees</Text>
                       <ListView
@@ -214,9 +214,9 @@ export default class studentImage extends Component {
                               }
                       />
                       </Content>
+                      </ScrollView>
                    </Container>
              </StyleProvider>
-        </ScrollView>
 
         );
    }

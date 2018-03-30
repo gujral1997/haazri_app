@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image,StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView,AsyncStorage, Platform, BackHandler, ToastAndroid } from 'react-native';
+import {Image,StyleSheet,View,Text,TextInput,TouchableOpacity,ScrollView,KeyboardAvoidingView,AsyncStorage, Platform, BackHandler, ToastAndroid, Keyboard } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import StartUpScreen from './StartUpScreen'
 import RnTestExceptionHandler from 'rn-test-exception-handler';
@@ -11,6 +11,8 @@ export default class LoginScreen extends Component
   {
         componentWillMount()
         {
+             this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
+             this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
           /*setTimeout(
             ()=>{
              this.props.navigation.navigate('loginScreen');
@@ -34,7 +36,18 @@ export default class LoginScreen extends Component
 
      componentWillUnmount() {
           if (Platform.OS === 'android') BackHandler.removeEventListener('hardwareBackPress');
+          this.keyboardDidShowListener.remove();
+          this.keyboardDidHideListener.remove();
     }
+
+    _keyboardDidHide () {
+    console.log('Keyboard Hidden');
+  }
+
+  _keyboardDidShow () {
+    console.log('Keyboard Shown');
+  }
+
     static navigatorStyle=startSingleScreenApplicationLogin;
     render(){
 
@@ -71,7 +84,7 @@ export default class LoginScreen extends Component
               </View>
             </View>
             <View style={{flexDirection:'row',justifyContent:'center',marginTop:-80}}>
-              <TouchableOpacity onPress={this.go}>
+              <TouchableOpacity onPress={this.login}>
                 <Text style={styles.button}>Sign In</Text>
               </TouchableOpacity>
             </View>
@@ -86,6 +99,7 @@ export default class LoginScreen extends Component
     }
 
     go=()=>{
+          Keyboard.dismiss;
           this.props.navigator.push({
             screen:'navigation.afterLogin'
           })
@@ -93,6 +107,7 @@ export default class LoginScreen extends Component
 
     login=()=>
     {
+      //Keyboard.dismiss;
       //post data to express backend point
       //fecth data via clients ip,local host never works
       fetch('http://192.168.56.1:3000/users',{
