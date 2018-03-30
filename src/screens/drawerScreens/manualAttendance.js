@@ -7,22 +7,46 @@ import {startSingleScreenApplicationLogin} from '../../styles/navigatorStyles';
 import material from '../../../native-base-theme/variables/material';
 import getTheme from '../../../native-base-theme/components';
 
-var hello = 'tick';
 
-function image(string)
+
+function boolean(string)
 {
-  if(string=='true')
+  if(string==='true')
   {
-    return 'tick.png';
+    return true;
   }
   else {
     {
-      return 'cross.png';
+      return false;
+    }
+  }
+}
+function reverse(bool)
+{
+  if(bool==='true')
+  {
+    return 'false';
+  }
+  else {
+    {
+      return 'true';
+    }
+  }
+}
+function string(bool)
+{
+  if(bool===true)
+  {
+    return 'true';
+  }
+  else {
+    {
+      return 'false';
     }
   }
 }
 
-export default class studentData extends Component {
+export default class manualAttendance extends Component {
 
       toggleDrawer=()=> {
            this.props.navigator.toggleDrawer({
@@ -135,7 +159,52 @@ export default class studentData extends Component {
                                   <View style={styles.list}><Text style={styles.textHeading}>{rowData.id}</Text></View>
                        <View style={styles.list}><Text style={styles.textHeading}>{rowData.name}</Text></View>
                        <View style={styles.list}>
-                         <Image source={{uri:'http://192.168.56.1:8000/data/sih/navigation/src/images/'+image(rowData.status)}} style={styles.icon}
+                         <Switch
+                           onValueChange={ (value) =>
+                             {
+                               fetch('http://192.168.56.1:3000/switching',{
+                                 method:'POST',
+                                 headers:{
+                                   'Accept':'application/json',
+                                   'Content-Type':'application/json',
+                                 },
+                                 body:JSON.stringify({
+                                   value:reverse(rowData.status),
+                                   name:rowData.name,
+                                 })
+                               })
+                               .then((response)=>response.json())
+                               .then((res)=>{
+                                 var value=reverse(rowData.status);
+                                 var name=rowData.name;
+                                 //AsyncStorage.setItem('value',rowData.status);
+                                 //AsyncStorage.setItem('name',rowData.name);
+                                 ToastAndroid.showWithGravityAndOffset(
+                                           res.message,
+                                           ToastAndroid.SHORT,
+                                           ToastAndroid.BOTTOM,
+                                           ToastAndroid.CENTER,
+                                           50,
+                                           30
+                                         );
+                                 // alert(res.message);
+                                 this.props.navigator.push({
+                           screen: "navigation.manualAttendance"
+                     		});
+
+                               })
+                               .catch(function(){
+                                     ToastAndroid.showWithGravityAndOffset(
+                                              'Can\'t connect to Internet!',
+                                              ToastAndroid.LONG,
+                                              ToastAndroid.BOTTOM,
+                                              25,
+                                              50
+                                            );
+                               });
+                             }
+                           }
+                           value={boolean(rowData.status)}
                          />
                        </View>
                      </View>}
