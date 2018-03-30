@@ -102,7 +102,7 @@ export default class parameterScreen extends Component {
                            </View>
                            <View style ={{flex:10}}>
                                  <Dropdown
-                                      label='Course ROom No'
+                                      label='Course Room No'
                                       baseColor='rgba(255, 255, 255, 1)'
                                       textColor='rgba(199, 147, 237, 1)'
                                       data={roomNo}

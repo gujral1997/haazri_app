@@ -37,8 +37,10 @@ export default class studentData extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true,
-    }
+          dataSource: new ListView.DataSource({
+            rowHasChanged: (row1, row2) => row1 !== row2,
+          }),
+        };
   }
 
 
@@ -74,6 +76,10 @@ export default class studentData extends Component {
       });
   }
 
+  async componentWillMount() {
+        _.delay(() => this.props.navigator.push({ screen: 'navigation.studentData' }), 5000);
+    }
+
   refresh(){
         this.props.navigator.push({
              screen: "navigation.studentData"
@@ -86,72 +92,128 @@ export default class studentData extends Component {
 }
 
   render() {
-    if (this.state.isLoading) {
-      return (
-        <View style={{flex: 1, paddingTop: 20}}>
-          <ActivityIndicator />
-        </View>
-      );
+    if (this.state.dataSource.getRowCount() === 0) {
+          return (
+           <ScrollView>
+           <StyleProvider style={getTheme(material)}>
+             <ImageBackground source={require('../../images/bg01.jpg')} style={styles.image}>
+                  <Container>
+                        <Header>
+                             <Left>
+                                   <Button
+                                          transparent onPress={this.toggleDrawer}
+                                          >
+                                                <Icon name="menu" />
+                                   </Button>
+                             </Left>
+                         <Title style={{marginTop: 10}}>Attendance Manager</Title>
+                         <Right>
+                               <Button
+                                      transparent onPress={()=>
+                                            this.props.navigator.push({
+                                                 screen: "navigation.studentData"
+                                          })
+                                      }
+                                      >
+                                            <Icon name="refresh" />
+                               </Button>
+                        </Right>
+                        </Header>
+
+                    <Content>
+                      <List>
+                        <View style={{flex: 1, flexDirection: 'row'}}>
+                          <View style={styles.listHeading}><Text style={styles.text}>ID</Text></View>
+                          <View style={styles.listHeading}><Text style={styles.text}>Name</Text></View>
+                          <View style={styles.listHeading}><Text style={styles.text}>Status</Text></View>
+                        </View>
+                        <ListView
+                          dataSource={this.state.dataSource}
+                          renderRow={(rowData) =>
+                                 <View style={styles.container}>
+                                       <View style={styles.list}><Text style={styles.textHeading}>{rowData.id}</Text></View>
+                            <View style={styles.list}><Text style={styles.textHeading}>{rowData.name}</Text></View>
+                            <View style={styles.list}>
+                              <Image source={{uri:'http://192.168.56.1:8000/data/sih/navigation/src/images/'+image(rowData.status)}} style={styles.icon}
+                              />
+                            </View>
+                          </View>}
+                        />
+                        <View style={{flex: 1, flexDirection: 'row'}}>
+                          <View style={styles.list} />
+                          <View style={styles.list} />
+                          <View style={styles.list} />
+                        </View>
+                      </List>
+                    </Content>
+                  </Container>
+             </ImageBackground>
+      </StyleProvider>
+           </ScrollView>
+         );
     }
 
-    return (
-      <ScrollView>
-      <StyleProvider style={getTheme(material)}>
-        <ImageBackground source={require('../../images/bg01.jpg')} style={styles.image}>
-             <Container>
-                   <Header>
-                        <Left>
-                              <Button
-                                     transparent onPress={this.toggleDrawer}
-                                     >
-                                           <Icon name="menu" />
-                              </Button>
-                        </Left>
-                    <Title style={{marginTop: 10}}>Attendance Manager</Title>
-                    <Right>
-                          <Button
-                                 transparent onPress={()=>
-                                       this.props.navigator.push({
-                                            screen: "navigation.studentData"
-                                     })
-                                 }
-                                 >
-                                       <Icon name="refresh" />
-                          </Button>
-                   </Right>
-                   </Header>
+    else {
+          return (
+           <ScrollView>
+           <StyleProvider style={getTheme(material)}>
+             <ImageBackground source={require('../../images/bg01.jpg')} style={styles.image}>
+                  <Container>
+                         <Header>
+                              <Left>
+                                    <Button
+                                           transparent onPress={this.toggleDrawer}
+                                           >
+                                                 <Icon name="menu" />
+                                    </Button>
+                              </Left>
+                          <Title style={{marginTop: 10}}>Attendance Manager</Title>
+                          <Right>
+                                <Button
+                                       transparent onPress={()=>
+                                             this.props.navigator.push({
+                                                  screen: "navigation.studentData"
+                                           })
+                                       }
+                                       >
+                                             <Icon name="refresh" />
+                                </Button>
+                         </Right>
+                         </Header>
 
-               <Content>
-                 <List>
-                   <View style={{flex: 1, flexDirection: 'row'}}>
-                     <View style={styles.listHeading}><Text style={styles.text}>ID</Text></View>
-                     <View style={styles.listHeading}><Text style={styles.text}>Name</Text></View>
-                     <View style={styles.listHeading}><Text style={styles.text}>Status</Text></View>
-                   </View>
-                   <ListView
-                     dataSource={this.state.dataSource}
-                     renderRow={(rowData) =>
-                            <View style={styles.container}>
-                                  <View style={styles.list}><Text style={styles.textHeading}>{rowData.id}</Text></View>
-                       <View style={styles.list}><Text style={styles.textHeading}>{rowData.name}</Text></View>
-                       <View style={styles.list}>
-                         <Image source={{uri:'http://192.168.56.1:8000/data/sih/navigation/src/images/'+image(rowData.status)}} style={styles.icon}
+                     <Content>
+                       <List>
+                         <View style={{flex: 1, flexDirection: 'row'}}>
+                           <View style={styles.listHeading}><Text style={styles.text}>ID</Text></View>
+                           <View style={styles.listHeading}><Text style={styles.text}>Name</Text></View>
+                           <View style={styles.listHeading}><Text style={styles.text}>Status</Text></View>
+                         </View>
+                         <ListView
+                           dataSource={this.state.dataSource}
+                           renderRow={(rowData) =>
+                                  <View style={styles.container}>
+                                        <View style={styles.list}><Text style={styles.textHeading}>{rowData.id}</Text></View>
+                             <View style={styles.list}><Text style={styles.textHeading}>{rowData.name}</Text></View>
+                             <View style={styles.list}>
+                               <Image source={{uri:'http://192.168.56.1:8000/data/sih/navigation/src/images/'+image(rowData.status)}} style={styles.icon}
+                               />
+                             </View>
+                           </View>}
                          />
-                       </View>
-                     </View>}
-                   />
-                   <View style={{flex: 1, flexDirection: 'row'}}>
-                     <View style={styles.list} />
-                     <View style={styles.list} />
-                     <View style={styles.list} />
-                   </View>
-                 </List>
-               </Content>
-             </Container>
-        </ImageBackground>
- </StyleProvider>
-      </ScrollView>
-    );
+                         <View style={{flex: 1, flexDirection: 'row'}}>
+                           <View style={styles.list} />
+                           <View style={styles.list} />
+                           <View style={styles.list} />
+                         </View>
+                       </List>
+                     </Content>
+                  </Container>
+             </ImageBackground>
+      </StyleProvider>
+           </ScrollView>
+          );
+   }
+
   }
 }
 const styles = StyleSheet.create({
