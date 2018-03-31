@@ -4,7 +4,7 @@ registerScreens();
 Navigation.startSingleScreenApp
 ({
 screen:{
-  screen:'navigation.sample',
+  screen:'navigation.StartUpScreen',
 },
 drawer: {
             left: {

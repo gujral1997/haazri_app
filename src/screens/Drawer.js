@@ -168,7 +168,7 @@ export default class afterLogin extends Component {
                                          >
                                                <View style={{flex:1, flexDirection: 'row'}}>
                                                     <View style ={{flex:1}}>
-                                                          <Image source={require('../ICONS/ICONS_WHITE/04.png')} style={styles.icon}/>
+                                                          <Image source={require('../images/avg.png')} style={styles.icon}/>
                                                     </View>
                                                     <View style={{flex:8}}>
                                                           <Text style={styles.text}> Avg. Rating</Text>
