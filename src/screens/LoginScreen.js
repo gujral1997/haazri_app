@@ -13,6 +13,10 @@ export default class LoginScreen extends Component
         {
              this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
              this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
+             this.props.navigator.setDrawerEnabled({
+               side: 'left', // the side of the drawer since you can have two, 'left' / 'right'
+               enabled: false // should the drawer be enabled or disabled (locked closed)
+             });
           /*setTimeout(
             ()=>{
              this.props.navigation.navigate('loginScreen');
@@ -110,7 +114,7 @@ export default class LoginScreen extends Component
       //Keyboard.dismiss;
       //post data to express backend point
       //fecth data via clients ip,local host never works
-      fetch('http://192.168.56.1:3000/users',{
+      fetch('http://192.168.43.137:3000/users',{
         method:'POST',
         headers:{
           'Accept':'application/json',

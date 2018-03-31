@@ -45,7 +45,7 @@ export default class studentData extends Component {
 
 
   componentDidMount() {
-    return fetch('http://192.168.56.1:3000/users1',{
+    return fetch('http://192.168.43.137:3000/users1',{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -75,11 +75,6 @@ export default class studentData extends Component {
                    );
       });
   }
-
-  async componentWillMount() {
-        _.delay(() => this.props.navigator.push({ screen: 'navigation.studentData' }), 5000);
-    }
-
   refresh(){
         this.props.navigator.push({
              screen: "navigation.studentData"
@@ -134,7 +129,7 @@ export default class studentData extends Component {
                                        <View style={styles.list}><Text style={styles.textHeading}>{rowData.id}</Text></View>
                             <View style={styles.list}><Text style={styles.textHeading}>{rowData.name}</Text></View>
                             <View style={styles.list}>
-                              <Image source={{uri:'http://192.168.56.1:8000/data/sih/navigation/src/images/'+image(rowData.status)}} style={styles.icon}
+                              <Image source={{uri:'http://192.168.43.137:8000/data/sih/navigation/src/images/'+image(rowData.status)}} style={styles.icon}
                               />
                             </View>
                           </View>}
@@ -195,7 +190,7 @@ export default class studentData extends Component {
                                         <View style={styles.list}><Text style={styles.textHeading}>{rowData.id}</Text></View>
                              <View style={styles.list}><Text style={styles.textHeading}>{rowData.name}</Text></View>
                              <View style={styles.list}>
-                               <Image source={{uri:'http://192.168.56.1:8000/data/sih/navigation/src/images/'+image(rowData.status)}} style={styles.icon}
+                               <Image source={{uri:'http://192.168.43.137:8000/data/sih/navigation/src/images/'+image(rowData.status)}} style={styles.icon}
                                />
                              </View>
                            </View>}
