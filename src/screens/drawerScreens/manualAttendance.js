@@ -67,7 +67,7 @@ export default class manualAttendance extends Component {
 
 
   componentDidMount() {
-    return fetch('http://192.168.43.137:3000/users1',{
+    return fetch('http://192.168.56.1:3000/users1',{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -162,7 +162,7 @@ export default class manualAttendance extends Component {
                          <Switch
                            onValueChange={ (value) =>
                              {
-                               fetch('http://192.168.43.137:3000/switching',{
+                               fetch('http://192.168.56.1:3000/switching',{
                                  method:'POST',
                                  headers:{
                                    'Accept':'application/json',

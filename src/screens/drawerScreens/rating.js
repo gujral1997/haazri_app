@@ -22,7 +22,7 @@ function image(string)
   }
 }
 
-export default class studentData extends Component {
+export default class rating extends Component {
 
       toggleDrawer=()=> {
            this.props.navigator.toggleDrawer({
@@ -45,7 +45,7 @@ export default class studentData extends Component {
 
 
   componentDidMount() {
-    return fetch('http://192.168.56.1:3000/users1',{
+    return fetch('http://192.168.56.1:3000/trating',{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -77,12 +77,12 @@ export default class studentData extends Component {
   }
   refresh(){
         this.props.navigator.push({
-             screen: "navigation.studentData"
+             screen: "navigation.rating"
       });
  }
  reload(){
       this.props.navigator.push({
-           screen: "navigation.afterLogin"
+           screen: "navigation.rating"
      });
 }
 
@@ -106,7 +106,7 @@ export default class studentData extends Component {
                                <Button
                                       transparent onPress={()=>
                                             this.props.navigator.push({
-                                                 screen: "navigation.studentData"
+                                                 screen: "navigation.rating"
                                           })
                                       }
                                       >
@@ -118,9 +118,9 @@ export default class studentData extends Component {
                     <Content>
                       <List>
                         <View style={{flex: 1, flexDirection: 'row'}}>
-                          <View style={styles.listHeading}><Text style={styles.text}>ID</Text></View>
-                          <View style={styles.listHeading}><Text style={styles.text}>Name</Text></View>
-                          <View style={styles.listHeading}><Text style={styles.text}>Status</Text></View>
+                          <View style={styles.listHeading}><Text style={styles.text}>Subject</Text></View>
+                          <View style={styles.listHeading}><Text style={styles.text}>Group</Text></View>
+                          <View style={styles.listHeading}><Text style={styles.text}>Avg. Rating</Text></View>
                         </View>
                         <ListView
                           dataSource={this.state.dataSource}
@@ -150,63 +150,62 @@ export default class studentData extends Component {
 
     else {
           return (
-           <ScrollView>
-           <StyleProvider style={getTheme(material)}>
-             <ImageBackground source={require('../../images/bg01.jpg')} style={styles.image}>
+          <ScrollView>
+          <StyleProvider style={getTheme(material)}>
+            <ImageBackground source={require('../../images/bg01.jpg')} style={styles.image}>
                   <Container>
-                         <Header>
-                              <Left>
-                                    <Button
-                                           transparent onPress={this.toggleDrawer}
-                                           >
-                                                 <Icon name="menu" />
-                                    </Button>
-                              </Left>
-                          <Title style={{marginTop: 10}}>Attendance Manager</Title>
-                          <Right>
-                                <Button
-                                       transparent onPress={()=>
-                                             this.props.navigator.push({
-                                                  screen: "navigation.studentData"
-                                           })
-                                       }
-                                       >
-                                             <Icon name="refresh" />
-                                </Button>
-                         </Right>
-                         </Header>
+                        <Header>
+                             <Left>
+                                   <Button
+                                          transparent onPress={this.toggleDrawer}
+                                          >
+                                                <Icon name="menu" />
+                                   </Button>
+                             </Left>
+                         <Title style={{marginTop: 10}}>Attendance Manager</Title>
+                         <Right>
+                               <Button
+                                      transparent onPress={()=>
+                                            this.props.navigator.push({
+                                                 screen: "navigation.rating"
+                                          })
+                                      }
+                                      >
+                                            <Icon name="refresh" />
+                               </Button>
+                        </Right>
+                        </Header>
 
-                     <Content>
-                       <List>
-                         <View style={{flex: 1, flexDirection: 'row'}}>
-                           <View style={styles.listHeading}><Text style={styles.text}>ID</Text></View>
-                           <View style={styles.listHeading}><Text style={styles.text}>Name</Text></View>
-                           <View style={styles.listHeading}><Text style={styles.text}>Status</Text></View>
-                         </View>
-                         <ListView
-                           dataSource={this.state.dataSource}
-                           renderRow={(rowData) =>
-                                  <View style={styles.container}>
-                                        <View style={styles.list}><Text style={styles.textHeading}>{rowData.id}</Text></View>
-                             <View style={styles.list}><Text style={styles.textHeading}>{rowData.name}</Text></View>
-                             <View style={styles.list}>
-                               <Image source={{uri:'http://192.168.56.1:8000/data/sih/navigation/src/images/'+image(rowData.status)}} style={styles.icon}
-                               />
-                             </View>
-                           </View>}
-                         />
-                         <View style={{flex: 1, flexDirection: 'row'}}>
-                           <View style={styles.list} />
-                           <View style={styles.list} />
-                           <View style={styles.list} />
-                         </View>
-                       </List>
-                     </Content>
+                    <Content>
+                     <List>
+                        <View style={{flex: 1, flexDirection: 'row'}}>
+                          <View style={styles.listHeading}><Text style={styles.text}>Subject</Text></View>
+                          <View style={styles.listHeading}><Text style={styles.text}>Group</Text></View>
+                          <View style={styles.listHeading}><Text style={styles.text}>Avg. Rating</Text></View>
+                        </View>
+                        <ListView
+                          dataSource={this.state.dataSource}
+                          renderRow={(rowData) =>
+                                 <View style={styles.container}>
+                                       <View style={styles.list}><Text style={styles.textHeading}>{rowData.subject}</Text></View>
+                            <View style={styles.list}><Text style={styles.textHeading}>{rowData.groupid}</Text></View>
+                            <View style={styles.list}>
+                              <Text style={styles.textHeadings}>{rowData.rating}</Text>
+                            </View>
+                          </View>}
+                        />
+                        <View style={{flex: 1, flexDirection: 'row'}}>
+                          <View style={styles.list} />
+                          <View style={styles.list} />
+                          <View style={styles.list} />
+                        </View>
+                     </List>
+                    </Content>
                   </Container>
-             </ImageBackground>
-      </StyleProvider>
-           </ScrollView>
-          );
+            </ImageBackground>
+     </StyleProvider>
+          </ScrollView>
+        );
    }
 
   }
@@ -230,12 +229,20 @@ const styles = StyleSheet.create({
   text:
   {
     fontWeight: 'bold',
-    fontSize:20,
-    color:'white'
+    fontSize:23,
+    color:'white',
+    fontFamily: 'Raleway'
   },
   textHeading: {
-        color:'white'
+        color:'white',
+        fontFamily: 'Raleway',
  },
+ textHeadings: {
+      color:'#f2b200',
+      fontFamily: 'Raleway',
+      fontWeight: 'bold',
+
+},
   image: {
 
  },

@@ -7,7 +7,9 @@ import parameterScreen from './drawerScreens/ParameterScreen';
 import studentImage from './drawerScreens/studentImage';
 import noAbsent from './drawerScreens/noAbsent';
 import manualAttendance from './drawerScreens/manualAttendance';
+import rating from './drawerScreens/rating';
 import Drawer from './Drawer';
+import sample from './sample';
 import React,{Component} from 'react';
 
 export function registerScreens()
@@ -21,4 +23,6 @@ export function registerScreens()
   Navigation.registerComponent('navigation.parameterScreen',()=>parameterScreen);
   Navigation.registerComponent('navigation.noAbsent',()=>noAbsent);
   Navigation.registerComponent('navigation.manualAttendance',()=>manualAttendance);
+  Navigation.registerComponent('navigation.rating',()=>rating);
+  Navigation.registerComponent('navigation.sample',()=>sample);
 }

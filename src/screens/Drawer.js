@@ -38,7 +38,14 @@ export default class afterLogin extends Component {
            });
      }
 
-     _goTostudentData() {
+     _goTorating() {
+		this._toggleDrawer();
+		this.props.navigator.push({
+      screen: "navigation.rating"
+		});
+	}
+
+      _goTostudentData() {
 		this._toggleDrawer();
 		this.props.navigator.push({
       screen: "navigation.studentData"
@@ -86,7 +93,7 @@ export default class afterLogin extends Component {
                   <Container>
                         <ImageBackground source={require('../images/Background-for-Menu.jpg')} style={styles.image}>
                         <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-                              <Thumbnail source={{uri: 'http://192.168.43.137:8000/data/sih/haazri_model/nameList/ansh/1.jpg'}} style={{height: 100, width: 100}} />
+                              <Thumbnail source={{uri: 'http://192.168.56.1:8000/data/sih/haazri_model/nameList/ansh/1.jpg'}} style={{height: 100, width: 100}} />
                               <Text style={styles.title}>Welcome {this.state.userName}!</Text>
                         </View>
                               <View style = {{flex:3}}>
@@ -155,6 +162,19 @@ export default class afterLogin extends Component {
                                                     </View>
                                                </View>
                                          </TouchableOpacity>
+                                         <TouchableOpacity
+                                          style={styles.button}
+                                          onPress={this._goTorating.bind(this)}
+                                         >
+                                               <View style={{flex:1, flexDirection: 'row'}}>
+                                                    <View style ={{flex:1}}>
+                                                          <Image source={require('../ICONS/ICONS_WHITE/04.png')} style={styles.icon}/>
+                                                    </View>
+                                                    <View style={{flex:8}}>
+                                                          <Text style={styles.text}> Avg. Rating</Text>
+                                                    </View>
+                                               </View>
+                                         </TouchableOpacity>
                               </View>
                     </ImageBackground>
                   </Container>
@@ -188,7 +208,7 @@ height: height
  },
  button: {
     backgroundColor: 'transparent',
-    padding: 33
+    padding: 35
   },
   text: {
         color: '#fff',
